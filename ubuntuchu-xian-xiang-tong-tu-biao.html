@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+        <meta charset="utf-8" />
+        <title>Ubuntu出现相同图标</title>
+        <link rel="stylesheet" href="/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="/">PowerUp </a></h1>
+                <nav><ul>
+                    <li><a href="/category/leetcode.html">Leetcode</a></li>
+                    <li><a href="/category/review.html">Review</a></li>
+                    <li class="active"><a href="/category/ubuntu.html">Ubuntu</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="/ubuntuchu-xian-xiang-tong-tu-biao.html" rel="bookmark"
+           title="Permalink to Ubuntu出现相同图标">Ubuntu出现相同图标</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2015-12-28T15:17:27.527956+08:00">
+                Published: 一 28 十二月 2015
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/power.html">power</a>
+        </address>
+<p>In <a href="/category/ubuntu.html">Ubuntu</a>.</p>
+
+</footer><!-- /.post-info -->      <blockquote>
+<p>不知道什么时候误操作，导致dash里出现两个chrome图标：chrome图标，chrome打开新窗口图标。而且如果把第一个图标锁定到启动器，每次打开它又会产生第二个图标，神烦。</p>
+</blockquote>
+<h2>原因</h2>
+<p>原因就是，不知道什么时候，在用户的目录下创建了一个chrome打开新窗口图标的图标，使得系统中存在两个chrome图标。</p>
+<h2>解决方法</h2>
+<p>将<code>~/.local/share/applications/google-chrome.desktop</code>删除掉，这样就仅保留系统全局的chrome图标。</p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
