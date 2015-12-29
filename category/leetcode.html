@@ -1,38 +1,61 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-        <meta charset="utf-8" />
-        <title>PowerUp - Leetcode</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8000/theme/css/font-awesome.min.css">
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+  <meta name="author" content="power" />
+  <meta name="description" content="" />
+<meta property="og:site_name" content="Power Up"/>
+<meta property="og:type" content="blog"/>
+<meta property="og:title" content="Power Up"/>
+<meta property="og:description" content=""/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://localhost:8000"/>
+<meta property="og:image" content="images/favicon.ico">
+  <title>Power Up &ndash; Category: Leetcode</title>
 </head>
+<body>
+  <aside>
+    <div>
+      <a href="http://localhost:8000">
+        <img src="images/favicon.ico" alt="Power" title="Power">
+      </a>
+      <h1><a href="http://localhost:8000">Power</a></h1>
+      <p></p>
+      <nav>
+        <ul class="list">
+          <li><a href="http://localhost:8000/pages/about.html#about">About</a></li>
+          <li><a href="http://localhost:8000/pages/contact.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/LinPower" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-rss" href="http://localhost:8000/feeds/all.atom.xml" target="_blank"><i class="fa fa-rss"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <nav>
+      <a href="http://localhost:8000">Home</a>
+    </nav>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="/">PowerUp </a></h1>
-                <nav><ul>
-                    <li class="active"><a href="/category/leetcode.html">Leetcode</a></li>
-                    <li><a href="/category/ubuntu.html">Ubuntu</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
-
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/leetcodezuo-ti-bi-ji.html">Leetcode做题笔记</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2015-12-28T15:12:38.583961+08:00">
-                Published: 一 28 十二月 2015
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/power.html">power</a>
-        </address>
-<p>In <a href="/category/leetcode.html">Leetcode</a>.</p>
-
-</footer><!-- /.post-info --><h2>Two Sum</h2>
+<article>
+  <header>
+    <h2><a href="http://localhost:8000/leetcodezuo-ti-bi-ji.html#leetcodezuo-ti-bi-ji">Leetcode做题笔记</a></h2>
+    <p>
+      Posted on 一 28 十二月 2015 in <a href="http://localhost:8000/category/leetcode.html">Leetcode</a>
+    </p>
+  </header>
+  <div>
+      <h2>Two Sum</h2>
 <ul>
 <li>The return numbers in vector should be increasely order.</li>
 </ul>
@@ -48,88 +71,26 @@
 <h2>Longest Palindromic Substring</h2>
 <ul>
 <li>Use Manacher algorithm.<a href="http://articles.leetcode.com/2011/11/longest-palindromic-substring-part-ii.htm">reference</a></li>
-<li>Time complexity O(N): the inner loop will take at most a total of N steps in the whole process. Why? Every step of outter loop, the mx(=id+len[id]) will be the most right index before this iteration and the inner loop will start checking charachers at position mx. Then update the mx. So the inner Loop will check every characher once.</li>
-</ul>
-<h2>Reverse Integer</h2>
-<ul>
-<li>Use the type of <code>unsigned int</code> to contain the <code>abs(x)</code>, <code>sign</code> be the sign of x.</li>
-<li>Use <code>res</code> to represent the reverse result so far and <code>res = res * 10 + digit</code>.</li>
-<li>When the <code>res</code> is bigger than 214748364 and there is digit which do not reverse yet, it will be overflow. If the reverse is overflow, the reverse of digits exclude the fast digit of x must bigger than <code>((2 &lt;&lt; 31) - 1) &gt;&gt; 1</code>. Because if x have nine digits, then the most significant digit should be 1 or 2.</li>
-</ul>
-<h2>String to Integer (atoi)</h2>
-<ul>
-<li>The <a href="http://www.cplusplus.com/reference/cstdlib/atoi/">atoi reference</a></li>
-<li>Use <a href="http://www.cplusplus.com/reference/cctype/isspace/"><code>int isspace(int c)</code></a> to check if character is a white-space and <a href="http://www.cplusplus.com/reference/cctype/isdigit/"><code>bool isdigit(char)</code></a> to check if character is decimal digit.</li>
-<li>And according to the problem, it requires that if the correct value is out of the range of representable values, INT_MAX (2147483647) or INT_MIN (-2147483648) is returned. But the <code>atoi</code> in standard library does not have this requirement.</li>
-</ul>
-<h2>Palindrome Number</h2>
-<ul>
-<li>The negative integer is not a palindrome.</li>
-</ul>
-<h2>Regular Expression Matching</h2>
-<ul>
-<li>DP, O(n * m)</li>
-<li>f[i][j] = f[i-1][j-1] &amp;&amp; match(s[j], p[i]), if <code>p[i] != '*' &amp;&amp; p[i+1] != '*'</code>.</li>
-<li>f[i][j] = f[i][j-1] || f[i-1][j-1] &amp;&amp; match(s[j], p[i]), if <code>p[i+1] == '*'</code>.</li>
-<li>f[i][j] = f[i-1][j], if <code>p[i] == '*'</code>.</li>
-</ul>
-<h2>Container With Most Water</h2>
-<ul>
-<li><a href="https://github.com/lccycc/leetcode/blob/master/Container%20With%20Most%20Water.cpp">Reference lccycc</a></li>
-<li>assume that 0..i-1 and j+1..n-1 have all find their best match</li>
-<li>assume height[i] &lt; height[j]</li>
-<li>if i match some k, i&lt;k&lt;j</li>
-<li>answer = (k-i) * min(height[i], height[k]) &lt;= (k-i) * height[i] &lt; (j-i) * height[i];</li>
-<li>so the best match of i is j.  for k &lt; i or k &gt; j, they have find their best match. so no need to concern.</li>
-</ul>
-<h2>Implement strStr()</h2>
-<ul>
-<li>kmp</li>
-<li>if the needle is empty string, should return 0.</li>
-</ul>
-<h2>Substring with Concatenation of All Words</h2>
-<ul>
-<li>O(len * n / len * len) = O(n * len), <code>n</code> is the length of s, <code>m</code> is the number of words, <code>len</code> is the length of word.</li>
-<li>The straightforward thought is that we can scan every m * len long string start form each position in s and see if all the strings in words have been appeared only once using map data structure.</li>
-<li>How to pick every m * len long string? Pick a start position in [0, len-1] and get the m * len start with it. When we have a m * len long string and the range is [i, j], then we can get another m * len long string by removing the [i, i+len-1] chars and append [j+1, j+len] chars.</li>
-</ul>
-<h2>Longest Valid Parentheses</h2>
-<ul>
-<li>First push -1 into stack.</li>
-<li>Then Scan the s, when the char scaned now is <code>(</code> then push the index into stack. When the char is <code>)</code>, pop the top element if the number of element in stack is more than one or change the top element to be the index now if the stack only contains one element, and calculate the <code>i - top</code> which is one of the candidates of the longest length.</li>
-</ul>
-<h2>Multiply Strings</h2>
-<ul>
-<li>Leading zero should be removed.</li>
-</ul>                </article>
-            </aside><!-- /#featured -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
+<li>Time complexity ...</li></ul>
+      <a class="btn" href="http://localhost:8000/leetcodezuo-ti-bi-ji.html#leetcodezuo-ti-bi-ji">Continue reading</a>
+  </div>
+</article>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+  <div class="pagination">
+  </div>
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
-
-</body>
+    <footer>
+      <p>&copy; power </p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p>    </footer>
+  </main>
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Power Up ",
+  "url" : "http://localhost:8000",
+  "image": "images/favicon.ico",
+  "description": ""
+}
+</script></body>
 </html>
