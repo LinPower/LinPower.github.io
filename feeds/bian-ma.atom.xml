@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Power Up</title><link href="http://linpower.github.io/" rel="alternate"></link><link href="http://linpower.github.io/feeds/bian-ma.atom.xml" rel="self"></link><id>http://linpower.github.io/</id><updated>2015-12-29T14:18:54+08:00</updated><entry><title>Leetcode-156 Binary Tree Upside Down</title><link href="http://linpower.github.io/leetcode-156-binary-tree-upside-down.html" rel="alternate"></link><updated>2015-12-29T14:18:54+08:00</updated><author><name>power</name></author><id>tag:linpower.github.io,2015-12-29:leetcode-156-binary-tree-upside-down.html</id><summary type="html">&lt;blockquote&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Power Up</title><link href="http://linpower.duapp.com/" rel="alternate"></link><link href="http://linpower.duapp.com/feeds/bian-ma.atom.xml" rel="self"></link><id>http://linpower.duapp.com/</id><updated>2015-12-29T14:18:54+08:00</updated><entry><title>Leetcode-156 Binary Tree Upside Down</title><link href="http://linpower.duapp.com/leetcode-156-binary-tree-upside-down.html" rel="alternate"></link><updated>2015-12-29T14:18:54+08:00</updated><author><name>power</name></author><id>tag:linpower.duapp.com,2015-12-29:leetcode-156-binary-tree-upside-down.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;solution: recursion&lt;/p&gt;
 &lt;p&gt;tricks:&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -40,7 +40,7 @@ turned into left leaf nodes. Return the new root.&lt;/p&gt;
     }
 
 };
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="Leetcode"></category></entry><entry><title>Leetcode做题笔记</title><link href="http://linpower.github.io/leetcodezuo-ti-bi-ji.html" rel="alternate"></link><updated>2015-12-29T13:34:38+08:00</updated><author><name>power</name></author><id>tag:linpower.github.io,2015-12-29:leetcodezuo-ti-bi-ji.html</id><summary type="html">&lt;h2&gt;Two Sum&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Leetcode"></category></entry><entry><title>Leetcode做题笔记</title><link href="http://linpower.duapp.com/leetcodezuo-ti-bi-ji.html" rel="alternate"></link><updated>2015-12-29T13:34:38+08:00</updated><author><name>power</name></author><id>tag:linpower.duapp.com,2015-12-29:leetcodezuo-ti-bi-ji.html</id><summary type="html">&lt;h2&gt;Two Sum&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;The return numbers in vector should be increasely order.&lt;/li&gt;
 &lt;/ul&gt;

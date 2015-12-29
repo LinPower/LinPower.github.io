@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Power Up</title><link href="http://linpower.github.io/" rel="alternate"></link><link href="http://linpower.github.io/feeds/all.atom.xml" rel="self"></link><id>http://linpower.github.io/</id><updated>2015-12-29T14:18:54+08:00</updated><entry><title>Leetcode-156 Binary Tree Upside Down</title><link href="http://linpower.github.io/leetcode-156-binary-tree-upside-down.html" rel="alternate"></link><updated>2015-12-29T14:18:54+08:00</updated><author><name>power</name></author><id>tag:linpower.github.io,2015-12-29:leetcode-156-binary-tree-upside-down.html</id><summary type="html">&lt;blockquote&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Power Up</title><link href="http://linpower.duapp.com/" rel="alternate"></link><link href="http://linpower.duapp.com/feeds/all.atom.xml" rel="self"></link><id>http://linpower.duapp.com/</id><updated>2015-12-29T14:18:54+08:00</updated><entry><title>Leetcode-156 Binary Tree Upside Down</title><link href="http://linpower.duapp.com/leetcode-156-binary-tree-upside-down.html" rel="alternate"></link><updated>2015-12-29T14:18:54+08:00</updated><author><name>power</name></author><id>tag:linpower.duapp.com,2015-12-29:leetcode-156-binary-tree-upside-down.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;solution: recursion&lt;/p&gt;
 &lt;p&gt;tricks:&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -40,7 +40,7 @@ turned into left leaf nodes. Return the new root.&lt;/p&gt;
     }
 
 };
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="Leetcode"></category></entry><entry><title>Leetcode做题笔记</title><link href="http://linpower.github.io/leetcodezuo-ti-bi-ji.html" rel="alternate"></link><updated>2015-12-29T13:34:38+08:00</updated><author><name>power</name></author><id>tag:linpower.github.io,2015-12-29:leetcodezuo-ti-bi-ji.html</id><summary type="html">&lt;h2&gt;Two Sum&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Leetcode"></category></entry><entry><title>Leetcode做题笔记</title><link href="http://linpower.duapp.com/leetcodezuo-ti-bi-ji.html" rel="alternate"></link><updated>2015-12-29T13:34:38+08:00</updated><author><name>power</name></author><id>tag:linpower.duapp.com,2015-12-29:leetcodezuo-ti-bi-ji.html</id><summary type="html">&lt;h2&gt;Two Sum&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;The return numbers in vector should be increasely order.&lt;/li&gt;
 &lt;/ul&gt;
@@ -109,7 +109,7 @@ turned into left leaf nodes. Return the new root.&lt;/p&gt;
 &lt;h2&gt;Multiply Strings&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Leading zero should be removed.&lt;/li&gt;
-&lt;/ul&gt;</summary><category term="Leetcode"></category><category term="Notes"></category></entry><entry><title>Ubuntu出现相同图标</title><link href="http://linpower.github.io/ubuntuchu-xian-xiang-tong-tu-biao.html" rel="alternate"></link><updated>2015-12-29T13:33:47+08:00</updated><author><name>power</name></author><id>tag:linpower.github.io,2015-12-29:ubuntuchu-xian-xiang-tong-tu-biao.html</id><summary type="html">&lt;blockquote&gt;
+&lt;/ul&gt;</summary><category term="Leetcode"></category><category term="Notes"></category></entry><entry><title>Ubuntu出现相同图标</title><link href="http://linpower.duapp.com/ubuntuchu-xian-xiang-tong-tu-biao.html" rel="alternate"></link><updated>2015-12-29T13:33:47+08:00</updated><author><name>power</name></author><id>tag:linpower.duapp.com,2015-12-29:ubuntuchu-xian-xiang-tong-tu-biao.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;不知道什么时候误操作，导致dash里出现两个chrome图标：chrome图标，chrome打开新窗口图标。而且如果把第一个图标锁定到启动器，每次打开它又会产生第二个图标，神烦。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2&gt;原因&lt;/h2&gt;
