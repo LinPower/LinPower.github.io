@@ -21,7 +21,7 @@
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="http://linpower.github.io"/>
 <meta property="og:image" content="/images/favicon.ico">
-  <title>Power Up &ndash; Tags</title>
+  <title>Power Up &ndash; Tag: GCJ</title>
 </head>
 <body>
   <aside>
@@ -54,23 +54,45 @@
 
 <article>
   <header>
-    <h1>Tags</h1>
+    <h2><a href="http://linpower.github.io/gcj2013-bti-manage-your-energy.html#gcj2013-bti-manage-your-energy">gcj2013 B题 Manage your Energy</a></h2>
+    <p>
+      Posted on 五 07 十一月 2014 in <a href="http://linpower.github.io/category/bian-ma.html">编码</a>
+      &#8226; Tagged with
+      <a href="http://linpower.github.io/tag/gcj.html">GCJ</a>    </p>
   </header>
   <div>
-    <ul class="list">          <li><a href="http://linpower.github.io/tag/bae.html">BAE</a> (2)</li>
-          <li><a href="http://linpower.github.io/tag/bcs.html">BCS</a> (1)</li>
-          <li><a href="http://linpower.github.io/tag/django.html">django</a> (2)</li>
-          <li><a href="http://linpower.github.io/tag/gcj.html">GCJ</a> (1)</li>
-          <li><a href="http://linpower.github.io/tag/leetcode.html">Leetcode</a> (1)</li>
-          <li><a href="http://linpower.github.io/tag/sublime.html">sublime</a> (2)</li>
-          <li><a href="http://linpower.github.io/tag/ubuntu.html">Ubuntu</a> (3)</li>
-    </ul>
+      <blockquote>
+<p>最近刷codejam的略感无力，本来以为今天刷gcj2013 round1A应该能轻松耍一下。。但是被第二题卡住，看来最近确实脑残了......</p>
+<p>这里仅仅记录下脑残的思路是如何产生，以便日后回想自己的too young too naive的时光。。</p>
+</blockquote>
+<h1>NC One</h1>
+<p>看完题目第一感觉，找出最大的Vmax然后把所有e * Vmax，其他求和 * r。但总有种不可能这么简单的感觉，但还是先写出来试试。果然码完就觉得有问题。</p>
+<h1>NC Two</h1>
+<p>反省第一版的问题后，发现在最大的值所在位置之后的一段v里需要再另外找最大值。于是求f[i]，表示i点及其后的最大值，接着从前往后扫一遍，尽量将e用在f[i]==v[i]的点上。然后就以为已经解决了。。</p>
+<h1>正解</h1>
+<p>最后还是没找出问题所在，时间不多（还有许多砖要搬），就直接看<a href="https://code.google.com/codejam/contest/2418487/dashboard#s=a&amp;a=1">题解</a>了。。</p>
+<p>对于每一个i，需要找出下一个比i大的位置j，那么肯定应该尽量把e用于j位置。。至于快速找出i的下一个比i大的位置，需要用到单调栈。</p>
+<div class="highlight"><pre><span class="cp">#include &lt;iostream&gt;</span>
+<span class="cp">#include &lt;cstring ...</span></pre></div>
+      <a class="btn" href="http://linpower.github.io/gcj2013-bti-manage-your-energy.html#gcj2013-bti-manage-your-energy">Continue reading</a>
   </div>
 </article>
+
+  <div class="pagination">
+  </div>
 
     <footer>
       <p>&copy; power 2015</p>
 <p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p>    </footer>
   </main>
-</body>
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Power Up ",
+  "url" : "http://linpower.github.io",
+  "image": "/images/favicon.ico",
+  "description": ""
+}
+</script></body>
 </html>

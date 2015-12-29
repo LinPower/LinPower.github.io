@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="http://linpower.github.io/theme/css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="http://linpower.github.io/theme/css/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="http://linpower.github.io/theme/css/font-awesome.min.css">
+  <link href="http://linpower.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Power Up Atom">
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+<meta name="author" content="power" />
+<meta name="description" content="最近刷codejam的略感无力，本来以为今天刷gcj2013 round1A应该能轻松耍一下。。但是被第二题卡住，看来最近确实脑残了...... 这里仅仅记录下脑残的思路是如何产生，以便日后回想自己的too young too naive的时光。。 NC One 看完题目第一感觉，找出最大的Vmax然后把所有e * Vmax，其他求和 * r。但总有种不可能这么简单的感觉，但还是先写出来试试。果然码完就觉得有问题。 NC Two 反省第一版的问题后，发现在最大的值所在位置之后的一段v里需要再另外找最大值。于是求f[i]，表示i点及其后的最大值，接着从前往后扫一遍，尽量将e用在f[i]==v[i]的点上。然后就以为已经解决了。。 正解 最后还是没找出问题所在，时间不多（还有许多砖要搬），就直接看题解了。。 对于每一个i，需要找出下一个比i大的位置j，那么肯定应该尽量把e用于j位置。。至于快速找出i的下一个比i大的位置，需要用到单调栈。 #include <iostream> #include <cstring ..." />
+<meta name="keywords" content="GCJ">
+<meta property="og:site_name" content="Power Up"/>
+<meta property="og:title" content="gcj2013 B题 Manage your Energy"/>
+<meta property="og:description" content="最近刷codejam的略感无力，本来以为今天刷gcj2013 round1A应该能轻松耍一下。。但是被第二题卡住，看来最近确实脑残了...... 这里仅仅记录下脑残的思路是如何产生，以便日后回想自己的too young too naive的时光。。 NC One 看完题目第一感觉，找出最大的Vmax然后把所有e * Vmax，其他求和 * r。但总有种不可能这么简单的感觉，但还是先写出来试试。果然码完就觉得有问题。 NC Two 反省第一版的问题后，发现在最大的值所在位置之后的一段v里需要再另外找最大值。于是求f[i]，表示i点及其后的最大值，接着从前往后扫一遍，尽量将e用在f[i]==v[i]的点上。然后就以为已经解决了。。 正解 最后还是没找出问题所在，时间不多（还有许多砖要搬），就直接看题解了。。 对于每一个i，需要找出下一个比i大的位置j，那么肯定应该尽量把e用于j位置。。至于快速找出i的下一个比i大的位置，需要用到单调栈。 #include <iostream> #include <cstring ..."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://linpower.github.io/gcj2013-bti-manage-your-energy.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2014-11-07 22:40:00+08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="http://linpower.github.io/author/power.html">
+<meta property="article:section" content="编码"/>
+<meta property="article:tag" content="GCJ"/>
+<meta property="og:image" content="/images/favicon.ico">  <title>Power Up &ndash; gcj2013 B题 Manage your Energy</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://linpower.github.io">
+        <img src="/images/favicon.ico" alt="Power" title="Power">
+      </a>
+      <h1><a href="http://linpower.github.io">Power</a></h1>
+      <p></p>
+      <nav>
+        <ul class="list">
+          <li><a href="http://linpower.github.io/pages/about.html#about">About</a></li>
+          <li><a href="http://linpower.github.io/pages/contact.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/LinPower" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-rss" href="/feeds/all.atom.xml" target="_blank"><i class="fa fa-rss"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <nav>
+      <a href="http://linpower.github.io">Home</a>
+      <a href="/archives.html">ARCHIVES</a>
+      <a href="/categories.html">CATEGORIES</a>
+      <a href="/tags.html">TAGS</a>
+      <a href="http://linpower.github.io/feeds/all.atom.xml">Atom</a>
+    </nav>
+
+<article>
+  <header>
+    <h1 id="gcj2013-bti-manage-your-energy">gcj2013 B题 Manage your Energy</h1>
+    <p>Posted on 五 07 十一月 2014 in <a href="http://linpower.github.io/category/bian-ma.html">编码</a></p>
+  </header>
+  <div>
+    <blockquote>
+<p>最近刷codejam的略感无力，本来以为今天刷gcj2013 round1A应该能轻松耍一下。。但是被第二题卡住，看来最近确实脑残了......</p>
+<p>这里仅仅记录下脑残的思路是如何产生，以便日后回想自己的too young too naive的时光。。</p>
+</blockquote>
+<h1>NC One</h1>
+<p>看完题目第一感觉，找出最大的Vmax然后把所有e * Vmax，其他求和 * r。但总有种不可能这么简单的感觉，但还是先写出来试试。果然码完就觉得有问题。</p>
+<h1>NC Two</h1>
+<p>反省第一版的问题后，发现在最大的值所在位置之后的一段v里需要再另外找最大值。于是求f[i]，表示i点及其后的最大值，接着从前往后扫一遍，尽量将e用在f[i]==v[i]的点上。然后就以为已经解决了。。</p>
+<h1>正解</h1>
+<p>最后还是没找出问题所在，时间不多（还有许多砖要搬），就直接看<a href="https://code.google.com/codejam/contest/2418487/dashboard#s=a&amp;a=1">题解</a>了。。</p>
+<p>对于每一个i，需要找出下一个比i大的位置j，那么肯定应该尽量把e用于j位置。。至于快速找出i的下一个比i大的位置，需要用到单调栈。</p>
+<div class="highlight"><pre><span class="cp">#include &lt;iostream&gt;</span>
+<span class="cp">#include &lt;cstring&gt;</span>
+<span class="cp">#include &lt;cstdio&gt;</span>
+<span class="cp">#include &lt;algorithm&gt;</span>
+<span class="cp">#include &lt;stack&gt;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">typedef</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">LL</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">10004</span><span class="p">],</span> <span class="n">nxt</span><span class="p">[</span><span class="mi">10004</span><span class="p">];</span>
+<span class="n">stack</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">st</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">T</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">n</span><span class="p">;</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">T</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">cas</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">cas</span> <span class="o">&lt;=</span> <span class="n">T</span><span class="p">;</span> <span class="n">cas</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d%d%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">r</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">r</span> <span class="o">&gt;</span> <span class="n">e</span><span class="p">)</span> <span class="n">r</span> <span class="o">=</span> <span class="n">e</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+            <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">i</span><span class="p">);</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">st</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">a</span><span class="p">[</span><span class="n">st</span><span class="p">.</span><span class="n">top</span><span class="p">()])</span> <span class="p">{</span>
+                <span class="n">nxt</span><span class="p">[</span><span class="n">st</span><span class="p">.</span><span class="n">top</span><span class="p">()]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+                <span class="n">st</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+            <span class="p">}</span>
+            <span class="n">st</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">st</span><span class="p">.</span><span class="n">empty</span><span class="p">()){</span>
+            <span class="n">nxt</span><span class="p">[</span><span class="n">st</span><span class="p">.</span><span class="n">top</span><span class="p">()]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+            <span class="n">st</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="n">LL</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">now</span> <span class="o">=</span> <span class="n">e</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">nxt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="o">||</span> <span class="p">(</span><span class="n">nxt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">LL</span><span class="p">)</span><span class="n">r</span> <span class="o">&gt;=</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">ans</span> <span class="o">+=</span> <span class="n">now</span> <span class="o">*</span> <span class="p">(</span><span class="n">LL</span><span class="p">)</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+                <span class="n">now</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">((</span><span class="n">nxt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">LL</span><span class="p">)</span><span class="n">r</span> <span class="o">+</span> <span class="n">now</span> <span class="o">&gt;</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">ans</span> <span class="o">+=</span> <span class="p">((</span><span class="n">nxt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">LL</span><span class="p">)</span><span class="n">r</span> <span class="o">+</span> <span class="n">now</span> <span class="o">-</span> <span class="n">e</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">LL</span><span class="p">)</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+                <span class="n">now</span> <span class="o">=</span> <span class="n">e</span> <span class="o">-</span> <span class="p">(</span><span class="n">nxt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">LL</span><span class="p">)</span><span class="n">r</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">now</span> <span class="o">+=</span> <span class="n">r</span><span class="p">;</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">now</span> <span class="o">&gt;</span> <span class="n">e</span><span class="p">)</span> <span class="n">now</span> <span class="o">=</span> <span class="n">e</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Case #%d: %lld</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">cas</span><span class="p">,</span> <span class="n">ans</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="http://linpower.github.io/tag/gcj.html">GCJ</a>
+    </p>
+  </div>
+</article>
+
+    <footer>
+      <p>&copy; power 2015</p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p>    </footer>
+  </main>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "name": "gcj2013 B题 Manage your Energy",
+  "headline": "gcj2013 B题 Manage your Energy",
+  "datePublished": "2014-11-07 22:40:00+08:00",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "power",
+    "url": "http://linpower.github.io/author/power.html"
+  },
+  "image": "/images/favicon.ico",
+  "url": "http://linpower.github.io/gcj2013-bti-manage-your-energy.html",
+  "description": "最近刷codejam的略感无力，本来以为今天刷gcj2013 round1A应该能轻松耍一下。。但是被第二题卡住，看来最近确实脑残了...... 这里仅仅记录下脑残的思路是如何产生，以便日后回想自己的too young too naive的时光。。 NC One 看完题目第一感觉，找出最大的Vmax然后把所有e * Vmax，其他求和 * r。但总有种不可能这么简单的感觉，但还是先写出来试试。果然码完就觉得有问题。 NC Two 反省第一版的问题后，发现在最大的值所在位置之后的一段v里需要再另外找最大值。于是求f[i]，表示i点及其后的最大值，接着从前往后扫一遍，尽量将e用在f[i]==v[i]的点上。然后就以为已经解决了。。 正解 最后还是没找出问题所在，时间不多（还有许多砖要搬），就直接看题解了。。 对于每一个i，需要找出下一个比i大的位置j，那么肯定应该尽量把e用于j位置。。至于快速找出i的下一个比i大的位置，需要用到单调栈。 #include <iostream> #include <cstring ..."
+}
+</script></body>
+</html>

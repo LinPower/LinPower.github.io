@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="http://linpower.github.io/theme/css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="http://linpower.github.io/theme/css/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="http://linpower.github.io/theme/css/font-awesome.min.css">
+  <link href="http://linpower.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Power Up Atom">
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+<meta name="author" content="power" />
+<meta name="description" content="因为像bae一类的paas平台，一般都是需要将除了代码外的文件存储到其他专门的服务中。为了使本博能上传图片，就使用了bcs，在django中，ImageField默认时存储到磁盘中，为了能上传到云上，需要自己定制storage。 参考python-django如何在sae中使用自带imagefield和filefield 定制Storage bcs的API使用官网提供的封装好的pybcs，其他就是继承并重载FileSystemStorage。 #-*- coding: UTF-8 -*- from django.core.files.storage import FileSystemStorage from django.core.exceptions import SuspiciousOperation import pybcs import logging import uuid import os pybcs.init_logging(logging.INFO) AK = 'your AK SK = 'your SK' BUCKET='your bucket' bcs ..." />
+<meta name="keywords" content="BAE, BCS, django">
+<meta property="og:site_name" content="Power Up"/>
+<meta property="og:title" content="在django中使用ImageField将图片存储在bcs中"/>
+<meta property="og:description" content="因为像bae一类的paas平台，一般都是需要将除了代码外的文件存储到其他专门的服务中。为了使本博能上传图片，就使用了bcs，在django中，ImageField默认时存储到磁盘中，为了能上传到云上，需要自己定制storage。 参考python-django如何在sae中使用自带imagefield和filefield 定制Storage bcs的API使用官网提供的封装好的pybcs，其他就是继承并重载FileSystemStorage。 #-*- coding: UTF-8 -*- from django.core.files.storage import FileSystemStorage from django.core.exceptions import SuspiciousOperation import pybcs import logging import uuid import os pybcs.init_logging(logging.INFO) AK = 'your AK SK = 'your SK' BUCKET='your bucket' bcs ..."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://linpower.github.io/zai-djangozhong-shi-yong-imagefieldjiang-tu-pian-cun-chu-zai-bcszhong.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2014-12-05 21:22:00+08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="http://linpower.github.io/author/power.html">
+<meta property="article:section" content="日常"/>
+<meta property="article:tag" content="BAE"/>
+<meta property="article:tag" content="BCS"/>
+<meta property="article:tag" content="django"/>
+<meta property="og:image" content="/images/favicon.ico">  <title>Power Up &ndash; 在django中使用ImageField将图片存储在bcs中</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://linpower.github.io">
+        <img src="/images/favicon.ico" alt="Power" title="Power">
+      </a>
+      <h1><a href="http://linpower.github.io">Power</a></h1>
+      <p></p>
+      <nav>
+        <ul class="list">
+          <li><a href="http://linpower.github.io/pages/about.html#about">About</a></li>
+          <li><a href="http://linpower.github.io/pages/contact.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/LinPower" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-rss" href="/feeds/all.atom.xml" target="_blank"><i class="fa fa-rss"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <nav>
+      <a href="http://linpower.github.io">Home</a>
+      <a href="/archives.html">ARCHIVES</a>
+      <a href="/categories.html">CATEGORIES</a>
+      <a href="/tags.html">TAGS</a>
+      <a href="http://linpower.github.io/feeds/all.atom.xml">Atom</a>
+    </nav>
+
+<article>
+  <header>
+    <h1 id="zai-djangozhong-shi-yong-imagefieldjiang-tu-pian-cun-chu-zai-bcszhong">在django中使用ImageField将图片存储在bcs中</h1>
+    <p>Posted on 五 05 十二月 2014 in <a href="http://linpower.github.io/category/ri-chang.html">日常</a></p>
+  </header>
+  <div>
+    <blockquote>
+<p>因为像bae一类的paas平台，一般都是需要将除了代码外的文件存储到其他专门的服务中。为了使本博能上传图片，就使用了bcs，在django中，ImageField默认时存储到磁盘中，为了能上传到云上，需要自己定制storage。</p>
+<p>参考<a href="http://yuanxiao.sinaapp.com/pages/122/126/310/article_index.html">python-django如何在sae中使用自带imagefield和filefield</a></p>
+</blockquote>
+<h1>定制Storage</h1>
+<p>bcs的API使用官网提供的封装好的pybcs，其他就是继承并重载FileSystemStorage。</p>
+<div class="highlight"><pre><span class="c">#-*- coding: UTF-8 -*-</span>
+<span class="kn">from</span> <span class="nn">django.core.files.storage</span> <span class="kn">import</span> <span class="n">FileSystemStorage</span>
+<span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="kn">import</span> <span class="n">SuspiciousOperation</span>
+<span class="kn">import</span> <span class="nn">pybcs</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">uuid</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">pybcs</span><span class="o">.</span><span class="n">init_logging</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="n">AK</span> <span class="o">=</span> <span class="s">&#39;your AK</span>
+<span class="n">SK</span> <span class="o">=</span> <span class="s">&#39;your SK&#39;</span>
+<span class="n">BUCKET</span><span class="o">=</span><span class="s">&#39;your bucket&#39;</span>
+<span class="n">bcs</span> <span class="o">=</span> <span class="n">pybcs</span><span class="o">.</span><span class="n">BCS</span><span class="p">(</span><span class="s">&#39;http://bcs.duapp.com/&#39;</span><span class="p">,</span> <span class="n">AK</span><span class="p">,</span> <span class="n">SK</span><span class="p">,</span> <span class="n">pybcs</span><span class="o">.</span><span class="n">HttplibHTTPC</span><span class="p">)</span>
+<span class="n">bckt</span> <span class="o">=</span> <span class="n">bcs</span><span class="o">.</span><span class="n">bucket</span><span class="p">(</span><span class="n">BUCKET</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">BcsStorage</span><span class="p">(</span><span class="n">FileSystemStorage</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">BcsStorage</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">location</span><span class="p">,</span> <span class="n">base_url</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">maxSize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; max file size 2G &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">fileTypes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; the file types allowed &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="s">&#39;*&#39;</span>
+
+    <span class="k">def</span> <span class="nf">makename</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="n">oname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">fname</span><span class="p">,</span> <span class="n">hk</span> <span class="o">=</span> <span class="n">oname</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">Except</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">fname</span><span class="p">,</span> <span class="n">hk</span> <span class="o">=</span> <span class="n">oname</span><span class="p">,</span> <span class="s">&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">hk</span><span class="p">:</span>
+        <span class="n">rname</span> <span class="o">=</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s">_</span><span class="si">%s</span><span class="s">.</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()),</span> <span class="n">fname</span><span class="p">,</span> <span class="n">hk</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">rname</span> <span class="o">=</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s">_</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()),</span> <span class="n">fname</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">rname</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">name</span>
+
+    <span class="k">def</span> <span class="nf">_save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
+    <span class="n">hz</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fileTypes</span> <span class="o">!=</span> <span class="s">&#39;*&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">hz</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fileTypes</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s">u&quot;不支持的文件类型</span><span class="si">%s</span><span class="s">，仅支持</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">hz</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fileTypes</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">SuspiciousOperation</span><span class="p">(</span><span class="s">u&quot;不支持的文件类型</span><span class="si">%s</span><span class="s">，仅支持</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">hz</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fileTypes</span><span class="p">))</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">makename</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">content</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">maxSize</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">SuspiciousOperation</span><span class="p">(</span><span class="s">u&quot;文件大小超过限制&quot;</span><span class="p">)</span>
+    <span class="c"># object name must start with &#39;/&#39;</span>
+            <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">):</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="n">bckt</span><span class="o">.</span><span class="n">object</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="n">bckt</span><span class="o">.</span><span class="n">object</span><span class="p">(</span><span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
+    <span class="n">o</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+            <span class="c">#let the object can be read by public</span>
+    <span class="n">o</span><span class="o">.</span><span class="n">make_public</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">name</span>
+
+    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+            <span class="c"># object name must start with &#39;/&#39;</span>
+    <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">):</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="n">bckt</span><span class="o">.</span><span class="n">object</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="n">bckt</span><span class="o">.</span><span class="n">object</span><span class="p">(</span><span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
+    <span class="n">o</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+
+<span class="k">class</span> <span class="nc">ImageStorage</span><span class="p">(</span><span class="n">BcsStorage</span><span class="p">):</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">fileTypes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="s">&#39;jpg&#39;</span><span class="p">,</span> <span class="s">&#39;jpeg&#39;</span><span class="p">,</span> <span class="s">&#39;png&#39;</span><span class="p">,</span> <span class="s">&#39;gif&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<h1>修改pybcs</h1>
+<p>印象中应该只有一处有错，在<code>common.py</code>中需要修改shorten函数：</p>
+<div class="highlight"><pre>def shorten(s, l=80):
+    if len(s)&lt;=l:
+    return s
+    if hasattr(s, &#39;__getitem__&#39;):
+    return s[:l-3] + &#39;...&#39;
+    else:
+    return &#39;data...&#39;
+</pre></div>
+
+
+<h1>使用方法</h1>
+<p>在定义model时，使用ImageField，并带上参数<code>storage=ImageStorage()</code>。同时需要重载delete，否则不会删除图片。</p>
+<p>class PaperImage(models.Model):
+    image = models.ImageField(verbose_name=ugettext(u'图片'), max_length=250,
+        upload_to=UPLOAD_TO, storage=ImageStorage(), null=True, blank=True)</p>
+<div class="highlight"><pre>def __unicode__(self):
+    return u&quot;%s&quot; % self.image
+
+def delete(self, using=None):
+    try:
+        self.image.storage.delete(self.image.name)
+    except Exception, e:
+        print e
+        pass
+    super(PaperImage, self).delete(using=None)
+</pre></div>
+
+
+<h1>修改require,txt</h1>
+<p>我使用的bae，环境中缺少PIL包，在require.txt添加一行，写上<code>PIL</code></p>
+<blockquote>
+<p>附上成功上传的图片</p>
+</blockquote>
+<p><img alt="'ace'" src="http://bcs.duapp.com/my-blog-sk1/image/95d3ab31-477c-4460-8335-7e5255acfd24_dd5511355211d85091ef3921.jpg" /></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="http://linpower.github.io/tag/bae.html">BAE</a>
+      <a href="http://linpower.github.io/tag/bcs.html">BCS</a>
+      <a href="http://linpower.github.io/tag/django.html">django</a>
+    </p>
+  </div>
+</article>
+
+    <footer>
+      <p>&copy; power 2015</p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p>    </footer>
+  </main>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "name": "在django中使用ImageField将图片存储在bcs中",
+  "headline": "在django中使用ImageField将图片存储在bcs中",
+  "datePublished": "2014-12-05 21:22:00+08:00",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "power",
+    "url": "http://linpower.github.io/author/power.html"
+  },
+  "image": "/images/favicon.ico",
+  "url": "http://linpower.github.io/zai-djangozhong-shi-yong-imagefieldjiang-tu-pian-cun-chu-zai-bcszhong.html",
+  "description": "因为像bae一类的paas平台，一般都是需要将除了代码外的文件存储到其他专门的服务中。为了使本博能上传图片，就使用了bcs，在django中，ImageField默认时存储到磁盘中，为了能上传到云上，需要自己定制storage。 参考python-django如何在sae中使用自带imagefield和filefield 定制Storage bcs的API使用官网提供的封装好的pybcs，其他就是继承并重载FileSystemStorage。 #-*- coding: UTF-8 -*- from django.core.files.storage import FileSystemStorage from django.core.exceptions import SuspiciousOperation import pybcs import logging import uuid import os pybcs.init_logging(logging.INFO) AK = 'your AK SK = 'your SK' BUCKET='your bucket' bcs ..."
+}
+</script></body>
+</html>

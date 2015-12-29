@@ -2,10 +2,10 @@
 <html lang="zh-cn">
 <head>
   <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="http://linpower.duapp.com/theme/css/style.min.css">
-  <link rel="stylesheet" type="text/css" href="http://linpower.duapp.com/theme/css/pygments.min.css">
-  <link rel="stylesheet" type="text/css" href="http://linpower.duapp.com/theme/css/font-awesome.min.css">
-  <link href="http://linpower.duapp.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Power Up Atom">
+  <link rel="stylesheet" type="text/css" href="http://linpower.github.io/theme/css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="http://linpower.github.io/theme/css/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="http://linpower.github.io/theme/css/font-awesome.min.css">
+  <link href="http://linpower.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Power Up Atom">
   <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 
@@ -19,22 +19,22 @@
 <meta property="og:title" content="Power Up"/>
 <meta property="og:description" content=""/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="http://linpower.duapp.com"/>
+<meta property="og:url" content="http://linpower.github.io"/>
 <meta property="og:image" content="/images/favicon.ico">
   <title>Power Up &ndash; Tag: Ubuntu</title>
 </head>
 <body>
   <aside>
     <div>
-      <a href="http://linpower.duapp.com">
+      <a href="http://linpower.github.io">
         <img src="/images/favicon.ico" alt="Power" title="Power">
       </a>
-      <h1><a href="http://linpower.duapp.com">Power</a></h1>
+      <h1><a href="http://linpower.github.io">Power</a></h1>
       <p></p>
       <nav>
         <ul class="list">
-          <li><a href="http://linpower.duapp.com/pages/about.html#about">About</a></li>
-          <li><a href="http://linpower.duapp.com/pages/contact.html#contact">Contact</a></li>
+          <li><a href="http://linpower.github.io/pages/about.html#about">About</a></li>
+          <li><a href="http://linpower.github.io/pages/contact.html#contact">Contact</a></li>
         </ul>
       </nav>
       <ul class="social">
@@ -45,20 +45,20 @@
   </aside>
   <main>
     <nav>
-      <a href="http://linpower.duapp.com">Home</a>
+      <a href="http://linpower.github.io">Home</a>
       <a href="/archives.html">ARCHIVES</a>
       <a href="/categories.html">CATEGORIES</a>
       <a href="/tags.html">TAGS</a>
-      <a href="http://linpower.duapp.com/feeds/all.atom.xml">Atom</a>
+      <a href="http://linpower.github.io/feeds/all.atom.xml">Atom</a>
     </nav>
 
 <article>
   <header>
-    <h2><a href="http://linpower.duapp.com/ubuntuchu-xian-xiang-tong-tu-biao.html#ubuntuchu-xian-xiang-tong-tu-biao">Ubuntu出现相同图标</a></h2>
+    <h2><a href="http://linpower.github.io/ubuntuchu-xian-xiang-tong-tu-biao.html#ubuntuchu-xian-xiang-tong-tu-biao">Ubuntu出现相同图标</a></h2>
     <p>
-      Posted on 二 29 十二月 2015 in <a href="http://linpower.duapp.com/category/ri-chang.html">日常</a>
+      Posted on 二 09 六月 2015 in <a href="http://linpower.github.io/category/ri-chang.html">日常</a>
       &#8226; Tagged with
-      <a href="http://linpower.duapp.com/tag/ubuntu.html">Ubuntu</a>    </p>
+      <a href="http://linpower.github.io/tag/ubuntu.html">Ubuntu</a>    </p>
   </header>
   <div>
       <blockquote>
@@ -68,7 +68,44 @@
 <p>原因就是，不知道什么时候，在用户的目录下创建了一个chrome打开新窗口图标的图标，使得系统中存在两个chrome图标。</p>
 <h2>解决方法</h2>
 <p>将<code>~/.local/share/applications/google-chrome.desktop</code>删除掉，这样就仅保留系统全局的chrome图标。</p>
-      <a class="btn" href="http://linpower.duapp.com/ubuntuchu-xian-xiang-tong-tu-biao.html#ubuntuchu-xian-xiang-tong-tu-biao">Continue reading</a>
+      <a class="btn" href="http://linpower.github.io/ubuntuchu-xian-xiang-tong-tu-biao.html#ubuntuchu-xian-xiang-tong-tu-biao">Continue reading</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://linpower.github.io/wu-shan-xi-tong-wen-jian-zuo-si.html#wu-shan-xi-tong-wen-jian-zuo-si">误删系统文件作死</a></h2>
+    <p>
+      Posted on 四 12 三月 2015 in <a href="http://linpower.github.io/category/ri-chang.html">日常</a>
+      &#8226; Tagged with
+      <a href="http://linpower.github.io/tag/ubuntu.html">Ubuntu</a>    </p>
+  </header>
+  <div>
+      <blockquote>
+<p>背景：今天网卡一直抽风，就怀疑是不是网卡驱动不稳定（因为这个网卡驱动是当时出的一个版本），就想起是不是去更新一下。</p>
+</blockquote>
+<p>在更新无线网卡时，不慎（作死）删除了<code>/lib/modules/3.13.0-32-generic/kernel/drivers/misc/eeprom/eeprom_93cx6.ko</code>、<code>/lib/modules/3.13.0-32-generic/kernel/lib/crc-ccitt.ko</code>, <code>/lib/modules/3.13.0-32-generic/kernel/net/wireless/cfg80211.ko</code>, <code>/lib/modules/3.13.0-32-generic/kernel/net/mac80211/mac80211.ko</code>等 ...</p>
+      <a class="btn" href="http://linpower.github.io/wu-shan-xi-tong-wen-jian-zuo-si.html#wu-shan-xi-tong-wen-jian-zuo-si">Continue reading</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://linpower.github.io/ubuntu1404an-zhuang-mt7630ewang-qia.html#ubuntu1404an-zhuang-mt7630ewang-qia">Ubuntu14.04安装MT7630E网卡</a></h2>
+    <p>
+      Posted on 五 05 十二月 2014 in <a href="http://linpower.github.io/category/ri-chang.html">日常</a>
+      &#8226; Tagged with
+      <a href="http://linpower.github.io/tag/ubuntu.html">Ubuntu</a>    </p>
+  </header>
+  <div>
+      <blockquote>
+<p>去年买的HP probook g440，网卡太奇怪，竟然linux低版本的内核不支持，今天发现在3.13~3.14版本支持了，所以整了个ubuntu14.04</p>
+</blockquote>
+<h1>安装MT7630E驱动</h1>
+<p>下载MT7630E_Wi-Fi_BT_Source_V3.14_20140625_v2.tar.gz，解压，按照readme说明安装</p>
+<h1>开机自动加载</h1>
+<p>很奇怪，重启后重视不能自动加载驱动，找了好久，终于发现将编译出来的文件：<code>rt2x00lib.ko</code>,<code>rt2x00pci.ko</code>,<code>rt2x00mmio.ko</code>,<code>rt2800lib.ko</code>,<code>rt2800pci.ko</code>复制到<code>/lib/modules/$(uname -r)/kernel/net/rt2x00/</code>中，并运行命令<code>cd /lib/modules/$(uname -r)/;sudo depmod ...</code></p>
+      <a class="btn" href="http://linpower.github.io/ubuntu1404an-zhuang-mt7630ewang-qia.html#ubuntu1404an-zhuang-mt7630ewang-qia">Continue reading</a>
   </div>
 </article>
 
@@ -84,7 +121,7 @@
   "@context" : "http://schema.org",
   "@type" : "Blog",
   "name": " Power Up ",
-  "url" : "http://linpower.duapp.com",
+  "url" : "http://linpower.github.io",
   "image": "/images/favicon.ico",
   "description": ""
 }

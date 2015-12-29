@@ -2,10 +2,10 @@
 <html lang="zh-cn">
 <head>
   <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="http://linpower.duapp.com/theme/css/style.min.css">
-  <link rel="stylesheet" type="text/css" href="http://linpower.duapp.com/theme/css/pygments.min.css">
-  <link rel="stylesheet" type="text/css" href="http://linpower.duapp.com/theme/css/font-awesome.min.css">
-  <link href="http://linpower.duapp.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Power Up Atom">
+  <link rel="stylesheet" type="text/css" href="http://linpower.github.io/theme/css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="http://linpower.github.io/theme/css/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="http://linpower.github.io/theme/css/font-awesome.min.css">
+  <link href="http://linpower.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Power Up Atom">
   <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 
@@ -19,22 +19,22 @@
 <meta property="og:title" content="Power Up"/>
 <meta property="og:description" content=""/>
 <meta property="og:locale" content="en_US"/>
-<meta property="og:url" content="http://linpower.duapp.com"/>
+<meta property="og:url" content="http://linpower.github.io"/>
 <meta property="og:image" content="/images/favicon.ico">
   <title>Power Up</title>
 </head>
 <body>
   <aside>
     <div>
-      <a href="http://linpower.duapp.com">
+      <a href="http://linpower.github.io">
         <img src="/images/favicon.ico" alt="Power" title="Power">
       </a>
-      <h1><a href="http://linpower.duapp.com">Power</a></h1>
+      <h1><a href="http://linpower.github.io">Power</a></h1>
       <p></p>
       <nav>
         <ul class="list">
-          <li><a href="http://linpower.duapp.com/pages/about.html#about">About</a></li>
-          <li><a href="http://linpower.duapp.com/pages/contact.html#contact">Contact</a></li>
+          <li><a href="http://linpower.github.io/pages/about.html#about">About</a></li>
+          <li><a href="http://linpower.github.io/pages/contact.html#contact">Contact</a></li>
         </ul>
       </nav>
       <ul class="social">
@@ -45,74 +45,20 @@
   </aside>
   <main>
     <nav>
-      <a href="http://linpower.duapp.com">Home</a>
+      <a href="http://linpower.github.io">Home</a>
       <a href="/archives.html">ARCHIVES</a>
       <a href="/categories.html">CATEGORIES</a>
       <a href="/tags.html">TAGS</a>
-      <a href="http://linpower.duapp.com/feeds/all.atom.xml">Atom</a>
+      <a href="http://linpower.github.io/feeds/all.atom.xml">Atom</a>
     </nav>
 
 <article>
   <header>
-    <h2><a href="http://linpower.duapp.com/leetcode-156-binary-tree-upside-down.html#leetcode-156-binary-tree-upside-down">Leetcode-156 Binary Tree Upside Down</a></h2>
+    <h2><a href="http://linpower.github.io/leetcodezuo-ti-bi-ji.html#leetcodezuo-ti-bi-ji">Leetcode做题笔记</a></h2>
     <p>
-      Posted on 二 29 十二月 2015 in <a href="http://linpower.duapp.com/category/bian-ma.html">编码</a>
+      Posted on 三 08 七月 2015 in <a href="http://linpower.github.io/category/bian-ma.html">编码</a>
       &#8226; Tagged with
-      <a href="http://linpower.duapp.com/tag/leetcode.html">Leetcode</a>    </p>
-  </header>
-  <div>
-      <blockquote>
-<p>solution: recursion</p>
-<p>tricks:</p>
-</blockquote>
-<h2>Binary Tree Upside Down</h2>
-<p>Given a binary tree where all the right nodes are either leaf nodes 
-with a sibling (a left node that shares the same parent node) or empty, 
-flip it upside down and turn it into a tree where the original right nodes 
-turned into left leaf nodes. Return the new root.</p>
-<p>For example:</p>
-<p>Given a binary tree {1,2,3,4,5},</p>
-<pre>
-    1
-   / \
-　 2  3
-  / \
- 4  5
-</pre>
-
-<p>return the root of the binary tree [4,5,2,#,#,3,1].</p>
-<pre>
-    4
-   / \
-   5  2
-     / \
-    3  1
-</pre>
-
-<p>code:</p>
-<div class="highlight"><pre><span class="k">class</span> <span class="n">Solution</span> {
-<span class="n">public:</span>
-    <span class="n">TreeNode</span> *<span class="n">upsideDownBinaryTree</span>(<span class="n">TreeNode</span> *<span class="n">root</span>) {
-        <span class="k">if</span>(!<span class="n">root</span> || !<span class="n">root-</span>&gt;<span class="n">left</span>) <span class="k">return</span> <span class="n">root</span>;
-        <span class="n">TreeNode</span> *<span class="n">newRoot</span> = <span class="n">upsideDownBinaryTree</span>(<span class="n">root-</span>&gt;<span class="n">left</span>);
-        <span class="n">root-</span>&gt;<span class="n">left-</span>&gt;<span class="n">left</span> = <span class="n">root</span>;
-        <span class="n">root-</span>&gt;<span class="n">left-</span>&gt;<span class="n">right</span> = <span class="n">root-</span>&gt;<span class="n">right</span>;
-        <span class="n">root-</span>&gt;<span class="n">left</span> = <span class="n">root-</span>&gt;<span class="n">right</span> = <span class="n">NULL</span>;
-        <span class="k">return</span> <span class="n">newRoot</span>;
-    }
-
-};
-</pre></div>
-  </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="http://linpower.duapp.com/leetcodezuo-ti-bi-ji.html#leetcodezuo-ti-bi-ji">Leetcode做题笔记</a></h2>
-    <p>
-      Posted on 二 29 十二月 2015 in <a href="http://linpower.duapp.com/category/bian-ma.html">编码</a>
-      &#8226; Tagged with
-      <a href="http://linpower.duapp.com/tag/leetcode.html">Leetcode</a>,      <a href="http://linpower.duapp.com/tag/notes.html">Notes</a>    </p>
+      <a href="http://linpower.github.io/tag/leetcode.html">Leetcode</a>    </p>
   </header>
   <div>
       <h2>Two Sum</h2>
@@ -190,11 +136,11 @@ turned into left leaf nodes. Return the new root.</p>
 </article>
 <article>
   <header>
-    <h2><a href="http://linpower.duapp.com/ubuntuchu-xian-xiang-tong-tu-biao.html#ubuntuchu-xian-xiang-tong-tu-biao">Ubuntu出现相同图标</a></h2>
+    <h2><a href="http://linpower.github.io/ubuntuchu-xian-xiang-tong-tu-biao.html#ubuntuchu-xian-xiang-tong-tu-biao">Ubuntu出现相同图标</a></h2>
     <p>
-      Posted on 二 29 十二月 2015 in <a href="http://linpower.duapp.com/category/ri-chang.html">日常</a>
+      Posted on 二 09 六月 2015 in <a href="http://linpower.github.io/category/ri-chang.html">日常</a>
       &#8226; Tagged with
-      <a href="http://linpower.duapp.com/tag/ubuntu.html">Ubuntu</a>    </p>
+      <a href="http://linpower.github.io/tag/ubuntu.html">Ubuntu</a>    </p>
   </header>
   <div>
       <blockquote>
@@ -204,6 +150,452 @@ turned into left leaf nodes. Return the new root.</p>
 <p>原因就是，不知道什么时候，在用户的目录下创建了一个chrome打开新窗口图标的图标，使得系统中存在两个chrome图标。</p>
 <h2>解决方法</h2>
 <p>将<code>~/.local/share/applications/google-chrome.desktop</code>删除掉，这样就仅保留系统全局的chrome图标。</p>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://linpower.github.io/wu-shan-xi-tong-wen-jian-zuo-si.html#wu-shan-xi-tong-wen-jian-zuo-si">误删系统文件作死</a></h2>
+    <p>
+      Posted on 四 12 三月 2015 in <a href="http://linpower.github.io/category/ri-chang.html">日常</a>
+      &#8226; Tagged with
+      <a href="http://linpower.github.io/tag/ubuntu.html">Ubuntu</a>    </p>
+  </header>
+  <div>
+      <blockquote>
+<p>背景：今天网卡一直抽风，就怀疑是不是网卡驱动不稳定（因为这个网卡驱动是当时出的一个版本），就想起是不是去更新一下。</p>
+</blockquote>
+<p>在更新无线网卡时，不慎（作死）删除了<code>/lib/modules/3.13.0-32-generic/kernel/drivers/misc/eeprom/eeprom_93cx6.ko</code>、<code>/lib/modules/3.13.0-32-generic/kernel/lib/crc-ccitt.ko</code>, <code>/lib/modules/3.13.0-32-generic/kernel/net/wireless/cfg80211.ko</code>, <code>/lib/modules/3.13.0-32-generic/kernel/net/mac80211/mac80211.ko</code>等，而且恢复不了。</p>
+<p>网上搜了一下，尝试了ubuntu重启时进入recovery模式，还是修复不了。然后以为应该是驱动被删的问题，以这个关键字搜，都是一些第三方驱动的安装之类的。后来想到应该是属于内核模块，所以尝试了下更新内核，结果如愿以偿。
+看来对linux的熟悉程度还不够，一个问题还要绕好久。</p>
+<p>相关命令：</p>
+<p><code>apt-get install linux-image</code></p>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://linpower.github.io/zai-djangozhong-shi-yong-imagefieldjiang-tu-pian-cun-chu-zai-bcszhong.html#zai-djangozhong-shi-yong-imagefieldjiang-tu-pian-cun-chu-zai-bcszhong">在django中使用ImageField将图片存储在bcs中</a></h2>
+    <p>
+      Posted on 五 05 十二月 2014 in <a href="http://linpower.github.io/category/ri-chang.html">日常</a>
+      &#8226; Tagged with
+      <a href="http://linpower.github.io/tag/bae.html">BAE</a>,      <a href="http://linpower.github.io/tag/bcs.html">BCS</a>,      <a href="http://linpower.github.io/tag/django.html">django</a>    </p>
+  </header>
+  <div>
+      <blockquote>
+<p>因为像bae一类的paas平台，一般都是需要将除了代码外的文件存储到其他专门的服务中。为了使本博能上传图片，就使用了bcs，在django中，ImageField默认时存储到磁盘中，为了能上传到云上，需要自己定制storage。</p>
+<p>参考<a href="http://yuanxiao.sinaapp.com/pages/122/126/310/article_index.html">python-django如何在sae中使用自带imagefield和filefield</a></p>
+</blockquote>
+<h1>定制Storage</h1>
+<p>bcs的API使用官网提供的封装好的pybcs，其他就是继承并重载FileSystemStorage。</p>
+<div class="highlight"><pre><span class="c">#-*- coding: UTF-8 -*-</span>
+<span class="kn">from</span> <span class="nn">django.core.files.storage</span> <span class="kn">import</span> <span class="n">FileSystemStorage</span>
+<span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="kn">import</span> <span class="n">SuspiciousOperation</span>
+<span class="kn">import</span> <span class="nn">pybcs</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">uuid</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">pybcs</span><span class="o">.</span><span class="n">init_logging</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="n">AK</span> <span class="o">=</span> <span class="s">&#39;your AK</span>
+<span class="n">SK</span> <span class="o">=</span> <span class="s">&#39;your SK&#39;</span>
+<span class="n">BUCKET</span><span class="o">=</span><span class="s">&#39;your bucket&#39;</span>
+<span class="n">bcs</span> <span class="o">=</span> <span class="n">pybcs</span><span class="o">.</span><span class="n">BCS</span><span class="p">(</span><span class="s">&#39;http://bcs.duapp.com/&#39;</span><span class="p">,</span> <span class="n">AK</span><span class="p">,</span> <span class="n">SK</span><span class="p">,</span> <span class="n">pybcs</span><span class="o">.</span><span class="n">HttplibHTTPC</span><span class="p">)</span>
+<span class="n">bckt</span> <span class="o">=</span> <span class="n">bcs</span><span class="o">.</span><span class="n">bucket</span><span class="p">(</span><span class="n">BUCKET</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">BcsStorage</span><span class="p">(</span><span class="n">FileSystemStorage</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">BcsStorage</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">location</span><span class="p">,</span> <span class="n">base_url</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">maxSize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; max file size 2G &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">fileTypes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; the file types allowed &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="s">&#39;*&#39;</span>
+
+    <span class="k">def</span> <span class="nf">makename</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="n">oname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">fname</span><span class="p">,</span> <span class="n">hk</span> <span class="o">=</span> <span class="n">oname</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">Except</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">fname</span><span class="p">,</span> <span class="n">hk</span> <span class="o">=</span> <span class="n">oname</span><span class="p">,</span> <span class="s">&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">hk</span><span class="p">:</span>
+        <span class="n">rname</span> <span class="o">=</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s">_</span><span class="si">%s</span><span class="s">.</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()),</span> <span class="n">fname</span><span class="p">,</span> <span class="n">hk</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">rname</span> <span class="o">=</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s">_</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()),</span> <span class="n">fname</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">rname</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">name</span>
+
+    <span class="k">def</span> <span class="nf">_save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
+    <span class="n">hz</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fileTypes</span> <span class="o">!=</span> <span class="s">&#39;*&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">hz</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fileTypes</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s">u&quot;不支持的文件类型</span><span class="si">%s</span><span class="s">，仅支持</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">hz</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fileTypes</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">SuspiciousOperation</span><span class="p">(</span><span class="s">u&quot;不支持的文件类型</span><span class="si">%s</span><span class="s">，仅支持</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">hz</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fileTypes</span><span class="p">))</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">makename</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">content</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">maxSize</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">SuspiciousOperation</span><span class="p">(</span><span class="s">u&quot;文件大小超过限制&quot;</span><span class="p">)</span>
+    <span class="c"># object name must start with &#39;/&#39;</span>
+            <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">):</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="n">bckt</span><span class="o">.</span><span class="n">object</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="n">bckt</span><span class="o">.</span><span class="n">object</span><span class="p">(</span><span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
+    <span class="n">o</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+            <span class="c">#let the object can be read by public</span>
+    <span class="n">o</span><span class="o">.</span><span class="n">make_public</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">name</span>
+
+    <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+            <span class="c"># object name must start with &#39;/&#39;</span>
+    <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">):</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="n">bckt</span><span class="o">.</span><span class="n">object</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">o</span> <span class="o">=</span> <span class="n">bckt</span><span class="o">.</span><span class="n">object</span><span class="p">(</span><span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
+    <span class="n">o</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+
+<span class="k">class</span> <span class="nc">ImageStorage</span><span class="p">(</span><span class="n">BcsStorage</span><span class="p">):</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">fileTypes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="s">&#39;jpg&#39;</span><span class="p">,</span> <span class="s">&#39;jpeg&#39;</span><span class="p">,</span> <span class="s">&#39;png&#39;</span><span class="p">,</span> <span class="s">&#39;gif&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<h1>修改pybcs</h1>
+<p>印象中应该只有一处有错，在<code>common.py</code>中需要修改shorten函数：</p>
+<div class="highlight"><pre>def shorten(s, l=80):
+    if len(s)&lt;=l:
+    return s
+    if hasattr(s, &#39;__getitem__&#39;):
+    return s[:l-3] + &#39;...&#39;
+    else:
+    return &#39;data...&#39;
+</pre></div>
+
+
+<h1>使用方法</h1>
+<p>在定义model时，使用ImageField，并带上参数<code>storage=ImageStorage()</code>。同时需要重载delete，否则不会删除图片。</p>
+<p>class PaperImage(models.Model):
+    image = models.ImageField(verbose_name=ugettext(u'图片'), max_length=250,
+        upload_to=UPLOAD_TO, storage=ImageStorage(), null=True, blank=True)</p>
+<div class="highlight"><pre>def __unicode__(self):
+    return u&quot;%s&quot; % self.image
+
+def delete(self, using=None):
+    try:
+        self.image.storage.delete(self.image.name)
+    except Exception, e:
+        print e
+        pass
+    super(PaperImage, self).delete(using=None)
+</pre></div>
+
+
+<h1>修改require,txt</h1>
+<p>我使用的bae，环境中缺少PIL包，在require.txt添加一行，写上<code>PIL</code></p>
+<blockquote>
+<p>附上成功上传的图片</p>
+</blockquote>
+<p><img alt="'ace'" src="http://bcs.duapp.com/my-blog-sk1/image/95d3ab31-477c-4460-8335-7e5255acfd24_dd5511355211d85091ef3921.jpg" /></p>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://linpower.github.io/ubuntu1404an-zhuang-mt7630ewang-qia.html#ubuntu1404an-zhuang-mt7630ewang-qia">Ubuntu14.04安装MT7630E网卡</a></h2>
+    <p>
+      Posted on 五 05 十二月 2014 in <a href="http://linpower.github.io/category/ri-chang.html">日常</a>
+      &#8226; Tagged with
+      <a href="http://linpower.github.io/tag/ubuntu.html">Ubuntu</a>    </p>
+  </header>
+  <div>
+      <blockquote>
+<p>去年买的HP probook g440，网卡太奇怪，竟然linux低版本的内核不支持，今天发现在3.13~3.14版本支持了，所以整了个ubuntu14.04</p>
+</blockquote>
+<h1>安装MT7630E驱动</h1>
+<p>下载MT7630E_Wi-Fi_BT_Source_V3.14_20140625_v2.tar.gz，解压，按照readme说明安装</p>
+<h1>开机自动加载</h1>
+<p>很奇怪，重启后重视不能自动加载驱动，找了好久，终于发现将编译出来的文件：<code>rt2x00lib.ko</code>,<code>rt2x00pci.ko</code>,<code>rt2x00mmio.ko</code>,<code>rt2800lib.ko</code>,<code>rt2800pci.ko</code>复制到<code>/lib/modules/$(uname -r)/kernel/net/rt2x00/</code>中，并运行命令<code>cd /lib/modules/$(uname -r)/;sudo depmod -a;</code>即可</p>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://linpower.github.io/baeshang-bu-shu-djangode-notes.html#baeshang-bu-shu-djangode-notes">bae上部署django的notes</a></h2>
+    <p>
+      Posted on 五 21 十一月 2014 in <a href="http://linpower.github.io/category/ri-chang.html">日常</a>
+      &#8226; Tagged with
+      <a href="http://linpower.github.io/tag/bae.html">BAE</a>,      <a href="http://linpower.github.io/tag/django.html">django</a>    </p>
+  </header>
+  <div>
+      <blockquote>
+<p>这个网站就部署在bae上的，正好自己在学python，所以就学了下使用django弄个网页。
+本来很早就想写部署notes，因为官方的部署很不全，自己遇到好多坑，现在把还记得的重要过程记录一下。</p>
+</blockquote>
+<p>这里的说明先假设在项目的根目录下创建创建了一个django的项目，名为blog，所有他的文件也就包含在/blog下面。</p>
+<h1>修改index.py</h1>
+<p>需要把项目的setting放入<code>DJANGO_SETTINGS_MODULE</code>变量中。</p>
+<div class="highlight"><pre><span class="c">#-*- coding:utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">django.core.handlers.wsgi</span> <span class="kn">import</span> <span class="n">WSGIHandler</span>
+<span class="kn">from</span> <span class="nn">bae.core.wsgi</span> <span class="kn">import</span> <span class="n">WSGIApplication</span>
+<span class="c"># settings放入变量中</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&#39;DJANGO_SETTINGS_MODULE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;blog.settings&#39;</span>
+<span class="c">#将项目目录加入到path中</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">)),</span> <span class="s">&#39;blog&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\\</span><span class="s">&#39;</span><span class="p">,</span><span class="s">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">path</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+</pre></div>
+
+
+<h1>修改app.conf</h1>
+<p>app.conf主要是用来控制后端WEB server的处理逻辑的，可以参考<a href="http://godbae.duapp.com/?p=44#comment-12">bae技术博客</a></p>
+<p>它可以直接处理静态请求，然后把动态请求都转发给后端的webServer。</p>
+<div class="highlight"><pre>handlers:
+  # 静态请求直接返回静态资源
+  - url : /static/(.*)
+    script : /blog/blog/static/$1
+  # 动态请求转发给index.py
+  - url : /.*
+    script: index.py
+
+  - expire : .jpg modify 10 years
+  - expire : .swf modify 10 years
+  - expire : .png modify 10 years
+  - expire : .gif modify 10 years
+  - expire : .JPG modify 10 years
+  - expire : .ico modify 10 years
+</pre></div>
+
+
+<h1>数据库连接</h1>
+<p>使用数据库以及django自带的管理模块<code>admin</code>，需要将python目录下的<code>/Lib/site-packages/django/contrib/admin</code>文件夹拷贝到上面设置的静态文件路径下<code>/blog/blog/static/</code>。</p>
+<p><code>settings.py</code>需要修改下数据库连接设置：</p>
+<div class="highlight"><pre>DATABASES = {
+    &#39;default&#39;: {
+        &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+        &#39;NAME&#39;: &#39;DBNAME&#39;, 
+        &#39;USER&#39;: &#39;USERID&#39;,
+        &#39;PASSWORD&#39;: &#39;PWD&#39;,
+        &#39;HOST&#39;: &#39;sqld.duapp.com&#39;, 
+        &#39;PORT&#39;: &#39;4050&#39;, 
+    }
+}
+</pre></div>
+
+
+<h1>本地运行与上线发布</h1>
+<p>上线发布需要把<code>settings.py</code>设置为生成模式，<code>debug=False</code>。</p>
+<p>因为装bae的本地开发环境比较麻烦，所以我在本地运行时，都是直接用runserver方式开启调试模式的，这时就需要设置静态文件的目录，以便获取静态文件</p>
+<p><code>settings.py</code>修改设置：</p>
+<div class="highlight"><pre><span class="o">......</span>
+<span class="n">DEBUG</span><span class="o">=</span><span class="bp">True</span>
+<span class="o">......</span>
+<span class="n">STATIC_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">PROJECT_DIR</span><span class="p">,</span> <span class="s">&#39;static&#39;</span><span class="p">)</span>
+<span class="n">STATIC_URL</span> <span class="o">=</span> <span class="s">&#39;/static/&#39;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">STATICFILES_DIRS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="s">&#39;css&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">STATIC_ROOT</span><span class="p">,</span> <span class="s">&#39;css&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\\</span><span class="s">&#39;</span><span class="p">,</span> <span class="s">&#39;/&#39;</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s">&#39;img&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">STATIC_ROOT</span><span class="p">,</span> <span class="s">&#39;img&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\\</span><span class="s">&#39;</span><span class="p">,</span> <span class="s">&#39;/&#39;</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s">&#39;js&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">STATIC_ROOT</span><span class="p">,</span> <span class="s">&#39;js&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\\</span><span class="s">&#39;</span><span class="p">,</span> <span class="s">&#39;/&#39;</span><span class="p">)),</span>
+<span class="p">)</span>
+</pre></div>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://linpower.github.io/sublimepei-zhi-ji-shi-yong.html#sublimepei-zhi-ji-shi-yong">sublime配置及使用</a></h2>
+    <p>
+      Posted on 二 11 十一月 2014 in <a href="http://linpower.github.io/category/ri-chang.html">日常</a>
+      &#8226; Tagged with
+      <a href="http://linpower.github.io/tag/sublime.html">sublime</a>    </p>
+  </header>
+  <div>
+      <blockquote>
+<p>之前一直使用超哥推荐的Notepad++，在windows还是挺顺手的，后来黎大神推荐了sublime，界面酷炫，可以DIY各种功能，跨平台，简直甩前者N条街。但不能文件关联也有一些不便，所以目前是notepad++当记事本用，sublime写点小程序用。</p>
+</blockquote>
+<h1>sublime设置及使用</h1>
+<p>推荐<a href="http://zh.lucida.me/blog/sublime-text-complete-guide/">Sublime Text 全程指南</a></p>
+<h1>编译&amp;运行C++</h1>
+<p>默认的设置能编译但运行不了C++程序，把<code>Packages/C++/C++.sublime-build</code>修改为：</p>
+<div class="highlight"><pre>{
+    &quot;cmd&quot;: [&quot;g++&quot;, &quot;-std=c++11&quot;, &quot;-Wall&quot;, &quot;<span class="cp">${</span><span class="nb">file</span><span class="cp">}</span>&quot;, &quot;-o&quot;, &quot;<span class="cp">${</span><span class="n">file_path</span><span class="cp">}</span>/<span class="cp">${</span><span class="n">file_base_name</span><span class="cp">}</span>&quot;],
+    &quot;file_regex&quot;: &quot;^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$&quot;,
+    &quot;working_dir&quot;: &quot;<span class="cp">${</span><span class="n">file_path</span><span class="cp">}</span>&quot;,
+    &quot;selector&quot;: &quot;source.c, source.c++&quot;,
+
+    &quot;variants&quot;:
+    [
+        {
+            &quot;name&quot;: &quot;Run&quot;,
+            &quot;shell&quot;: true,
+            &quot;cmd&quot;: [&quot;start&quot;, &quot;cmd&quot;, &quot;/c&quot;, &quot;<span class="cp">${</span><span class="n">file_path</span><span class="cp">}</span>/<span class="cp">${</span><span class="n">file_base_name</span><span class="cp">}</span> <span class="err">&amp;&amp;</span> pause&quot;]
+        }
+    ]
+}
+</pre></div>
+
+
+<p>这样就可以在命令行中运行程序输入数据。</p>
+<h1>个人习惯配置</h1>
+<p>可以参考之前提到的那篇文章，这里记录下自己的设置</p>
+<div class="highlight"><pre>{
+            // 使光标闪动更加柔和
+    &quot;caret_style&quot;: &quot;phase&quot;,
+            // 显示空白字符
+    &quot;draw_white_space&quot;: &quot;all&quot;,
+            // 保存时自动增加文件末尾换行
+    &quot;ensure_newline_at_eof_on_save&quot;: true,
+            // 字体大小
+    &quot;font_size&quot;: 16.0,
+            // 高亮当前行
+    &quot;highlight_line&quot;: true,
+            // 高亮修改过的标签
+    &quot;highlight_modified_tabs&quot;: true,
+    &quot;ignored_packages&quot;:
+    [
+        &quot;Vintage&quot;
+    ],
+            // 添加标尺
+    &quot;rulers&quot;:
+    [
+        80,
+        100
+    ],
+            // tab大小设置为4
+    &quot;tab_size&quot;: 4,
+    &quot;theme&quot;: &quot;Soda Dark.sublime-theme&quot;,
+            // 使用空格代替tab
+    &quot;translate_tabs_to_spaces&quot;: true,
+            // 保存时去除末尾空白字符
+    &quot;trim_trailing_white_space_on_save&quot;: true
+}
+</pre></div>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://linpower.github.io/gcj2013-bti-manage-your-energy.html#gcj2013-bti-manage-your-energy">gcj2013 B题 Manage your Energy</a></h2>
+    <p>
+      Posted on 五 07 十一月 2014 in <a href="http://linpower.github.io/category/bian-ma.html">编码</a>
+      &#8226; Tagged with
+      <a href="http://linpower.github.io/tag/gcj.html">GCJ</a>    </p>
+  </header>
+  <div>
+      <blockquote>
+<p>最近刷codejam的略感无力，本来以为今天刷gcj2013 round1A应该能轻松耍一下。。但是被第二题卡住，看来最近确实脑残了......</p>
+<p>这里仅仅记录下脑残的思路是如何产生，以便日后回想自己的too young too naive的时光。。</p>
+</blockquote>
+<h1>NC One</h1>
+<p>看完题目第一感觉，找出最大的Vmax然后把所有e * Vmax，其他求和 * r。但总有种不可能这么简单的感觉，但还是先写出来试试。果然码完就觉得有问题。</p>
+<h1>NC Two</h1>
+<p>反省第一版的问题后，发现在最大的值所在位置之后的一段v里需要再另外找最大值。于是求f[i]，表示i点及其后的最大值，接着从前往后扫一遍，尽量将e用在f[i]==v[i]的点上。然后就以为已经解决了。。</p>
+<h1>正解</h1>
+<p>最后还是没找出问题所在，时间不多（还有许多砖要搬），就直接看<a href="https://code.google.com/codejam/contest/2418487/dashboard#s=a&amp;a=1">题解</a>了。。</p>
+<p>对于每一个i，需要找出下一个比i大的位置j，那么肯定应该尽量把e用于j位置。。至于快速找出i的下一个比i大的位置，需要用到单调栈。</p>
+<div class="highlight"><pre><span class="cp">#include &lt;iostream&gt;</span>
+<span class="cp">#include &lt;cstring&gt;</span>
+<span class="cp">#include &lt;cstdio&gt;</span>
+<span class="cp">#include &lt;algorithm&gt;</span>
+<span class="cp">#include &lt;stack&gt;</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">typedef</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">LL</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">10004</span><span class="p">],</span> <span class="n">nxt</span><span class="p">[</span><span class="mi">10004</span><span class="p">];</span>
+<span class="n">stack</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">st</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">T</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">n</span><span class="p">;</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">T</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">cas</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">cas</span> <span class="o">&lt;=</span> <span class="n">T</span><span class="p">;</span> <span class="n">cas</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d%d%d&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">r</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">r</span> <span class="o">&gt;</span> <span class="n">e</span><span class="p">)</span> <span class="n">r</span> <span class="o">=</span> <span class="n">e</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+            <span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">i</span><span class="p">);</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">st</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">a</span><span class="p">[</span><span class="n">st</span><span class="p">.</span><span class="n">top</span><span class="p">()])</span> <span class="p">{</span>
+                <span class="n">nxt</span><span class="p">[</span><span class="n">st</span><span class="p">.</span><span class="n">top</span><span class="p">()]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+                <span class="n">st</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+            <span class="p">}</span>
+            <span class="n">st</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">st</span><span class="p">.</span><span class="n">empty</span><span class="p">()){</span>
+            <span class="n">nxt</span><span class="p">[</span><span class="n">st</span><span class="p">.</span><span class="n">top</span><span class="p">()]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+            <span class="n">st</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="n">LL</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">now</span> <span class="o">=</span> <span class="n">e</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">nxt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="o">||</span> <span class="p">(</span><span class="n">nxt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">LL</span><span class="p">)</span><span class="n">r</span> <span class="o">&gt;=</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">ans</span> <span class="o">+=</span> <span class="n">now</span> <span class="o">*</span> <span class="p">(</span><span class="n">LL</span><span class="p">)</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+                <span class="n">now</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">((</span><span class="n">nxt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">LL</span><span class="p">)</span><span class="n">r</span> <span class="o">+</span> <span class="n">now</span> <span class="o">&gt;</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">ans</span> <span class="o">+=</span> <span class="p">((</span><span class="n">nxt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">LL</span><span class="p">)</span><span class="n">r</span> <span class="o">+</span> <span class="n">now</span> <span class="o">-</span> <span class="n">e</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">LL</span><span class="p">)</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+                <span class="n">now</span> <span class="o">=</span> <span class="n">e</span> <span class="o">-</span> <span class="p">(</span><span class="n">nxt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">LL</span><span class="p">)</span><span class="n">r</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">now</span> <span class="o">+=</span> <span class="n">r</span><span class="p">;</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">now</span> <span class="o">&gt;</span> <span class="n">e</span><span class="p">)</span> <span class="n">now</span> <span class="o">=</span> <span class="n">e</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Case #%d: %lld</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">cas</span><span class="p">,</span> <span class="n">ans</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://linpower.github.io/win7xia-pei-zhi-sublime2he-mingwyong-yu-bian-yi-c.html#win7xia-pei-zhi-sublime2he-mingwyong-yu-bian-yi-c">Win7下配置sublime2和MinGW用于编译C++</a></h2>
+    <p>
+      Posted on 二 04 十一月 2014 in <a href="http://linpower.github.io/category/ri-chang.html">日常</a>
+      &#8226; Tagged with
+      <a href="http://linpower.github.io/tag/sublime.html">sublime</a>    </p>
+  </header>
+  <div>
+      <blockquote>
+<p>在windows下使用sublime2时，有一个很不方便的地方，运行c++时不能使用命令行输入数据，这给调试小程序带来了麻烦，尝试了一下各种方法终于搞定。</p>
+</blockquote>
+<p>sublime2和MinGW的安装配置不提及，网上资料非常多。</p>
+<p>最重要的的是修改<code>C++.sublime-build</code>文件：</p>
+<div class="highlight"><pre>{
+    &quot;cmd&quot;: [&quot;g++&quot;, &quot;-std=c++11&quot;, &quot;-Wall&quot;, &quot;<span class="cp">${</span><span class="nb">file</span><span class="cp">}</span>&quot;, &quot;-o&quot;, &quot;<span class="cp">${</span><span class="n">file_path</span><span class="cp">}</span>/<span class="cp">${</span><span class="n">file_base_name</span><span class="cp">}</span>&quot;],
+    &quot;file_regex&quot;: &quot;^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$&quot;,
+    &quot;working_dir&quot;: &quot;<span class="cp">${</span><span class="n">file_path</span><span class="cp">}</span>&quot;,
+    &quot;selector&quot;: &quot;source.c, source.c++&quot;,
+
+    &quot;variants&quot;:
+    [
+        {
+            &quot;name&quot;: &quot;Run&quot;,
+            &quot;shell&quot;: true,
+            &quot;cmd&quot;: [&quot;start&quot;, &quot;cmd&quot;, &quot;/c&quot;, &quot;<span class="cp">${</span><span class="n">file_path</span><span class="cp">}</span>/<span class="cp">${</span><span class="n">file_base_name</span><span class="cp">}</span> <span class="err">&amp;&amp;</span> pause&quot;]
+        }
+    ]
+}
+</pre></div>
+
+
+<p>如果运行不了，可以按快捷键<code>Ctrl + `</code>调出sublime的控制台查看错误信息。</p>
+<p>如果是因为文件名带有中文导致编码错误，可以在<code>sublime_plugin.py</code>中添加：</p>
+<div class="highlight"><pre>reload(sys)
+sys.setdefaultencoding(&#39;utf-8&#39;)
+</pre></div>
+
+
+<p>但是中文路径名始终没找到解决办法。</p>
+<hr />
   </div>
 </article>
 
@@ -219,7 +611,7 @@ turned into left leaf nodes. Return the new root.</p>
   "@context" : "http://schema.org",
   "@type" : "Blog",
   "name": " Power Up ",
-  "url" : "http://linpower.duapp.com",
+  "url" : "http://linpower.github.io",
   "image": "/images/favicon.ico",
   "description": ""
 }

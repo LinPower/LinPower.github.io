@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="http://linpower.github.io/theme/css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="http://linpower.github.io/theme/css/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="http://linpower.github.io/theme/css/font-awesome.min.css">
+  <link href="http://linpower.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Power Up Atom">
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+  <meta name="author" content="power" />
+  <meta name="description" content="" />
+<meta property="og:site_name" content="Power Up"/>
+<meta property="og:type" content="blog"/>
+<meta property="og:title" content="Power Up"/>
+<meta property="og:description" content=""/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://linpower.github.io"/>
+<meta property="og:image" content="/images/favicon.ico">
+  <title>Power Up &ndash; Tag: BAE</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://linpower.github.io">
+        <img src="/images/favicon.ico" alt="Power" title="Power">
+      </a>
+      <h1><a href="http://linpower.github.io">Power</a></h1>
+      <p></p>
+      <nav>
+        <ul class="list">
+          <li><a href="http://linpower.github.io/pages/about.html#about">About</a></li>
+          <li><a href="http://linpower.github.io/pages/contact.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/LinPower" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-rss" href="/feeds/all.atom.xml" target="_blank"><i class="fa fa-rss"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <nav>
+      <a href="http://linpower.github.io">Home</a>
+      <a href="/archives.html">ARCHIVES</a>
+      <a href="/categories.html">CATEGORIES</a>
+      <a href="/tags.html">TAGS</a>
+      <a href="http://linpower.github.io/feeds/all.atom.xml">Atom</a>
+    </nav>
+
+<article>
+  <header>
+    <h2><a href="http://linpower.github.io/zai-djangozhong-shi-yong-imagefieldjiang-tu-pian-cun-chu-zai-bcszhong.html#zai-djangozhong-shi-yong-imagefieldjiang-tu-pian-cun-chu-zai-bcszhong">在django中使用ImageField将图片存储在bcs中</a></h2>
+    <p>
+      Posted on 五 05 十二月 2014 in <a href="http://linpower.github.io/category/ri-chang.html">日常</a>
+      &#8226; Tagged with
+      <a href="http://linpower.github.io/tag/bae.html">BAE</a>,      <a href="http://linpower.github.io/tag/bcs.html">BCS</a>,      <a href="http://linpower.github.io/tag/django.html">django</a>    </p>
+  </header>
+  <div>
+      <blockquote>
+<p>因为像bae一类的paas平台，一般都是需要将除了代码外的文件存储到其他专门的服务中。为了使本博能上传图片，就使用了bcs，在django中，ImageField默认时存储到磁盘中，为了能上传到云上，需要自己定制storage。</p>
+<p>参考<a href="http://yuanxiao.sinaapp.com/pages/122/126/310/article_index.html">python-django如何在sae中使用自带imagefield和filefield</a></p>
+</blockquote>
+<h1>定制Storage</h1>
+<p>bcs的API使用官网提供的封装好的pybcs，其他就是继承并重载FileSystemStorage。</p>
+<div class="highlight"><pre><span class="c">#-*- coding: UTF-8 -*-</span>
+<span class="kn">from</span> <span class="nn">django.core.files.storage</span> <span class="kn">import</span> <span class="n">FileSystemStorage</span>
+<span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="kn">import</span> <span class="n">SuspiciousOperation</span>
+<span class="kn">import</span> <span class="nn">pybcs</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">uuid</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">pybcs</span><span class="o">.</span><span class="n">init_logging</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="n">AK</span> <span class="o">=</span> <span class="s">&#39;your AK</span>
+<span class="n">SK</span> <span class="o">=</span> <span class="s">&#39;your SK&#39;</span>
+<span class="n">BUCKET</span><span class="o">=</span><span class="s">&#39;your bucket&#39;</span>
+<span class="n">bcs ...</span></pre></div>
+      <a class="btn" href="http://linpower.github.io/zai-djangozhong-shi-yong-imagefieldjiang-tu-pian-cun-chu-zai-bcszhong.html#zai-djangozhong-shi-yong-imagefieldjiang-tu-pian-cun-chu-zai-bcszhong">Continue reading</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://linpower.github.io/baeshang-bu-shu-djangode-notes.html#baeshang-bu-shu-djangode-notes">bae上部署django的notes</a></h2>
+    <p>
+      Posted on 五 21 十一月 2014 in <a href="http://linpower.github.io/category/ri-chang.html">日常</a>
+      &#8226; Tagged with
+      <a href="http://linpower.github.io/tag/bae.html">BAE</a>,      <a href="http://linpower.github.io/tag/django.html">django</a>    </p>
+  </header>
+  <div>
+      <blockquote>
+<p>这个网站就部署在bae上的，正好自己在学python，所以就学了下使用django弄个网页。
+本来很早就想写部署notes，因为官方的部署很不全，自己遇到好多坑，现在把还记得的重要过程记录一下。</p>
+</blockquote>
+<p>这里的说明先假设在项目的根目录下创建创建了一个django的项目，名为blog，所有他的文件也就包含在/blog下面。</p>
+<h1>修改index.py</h1>
+<p>需要把项目的setting放入<code>DJANGO_SETTINGS_MODULE</code>变量中。</p>
+<div class="highlight"><pre><span class="c">#-*- coding:utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">django.core.handlers.wsgi</span> <span class="kn">import</span> <span class="n">WSGIHandler</span>
+<span class="kn">from</span> <span class="nn">bae.core.wsgi</span> <span class="kn">import</span> <span class="n">WSGIApplication</span>
+<span class="c"># settings放入变量中</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&#39;DJANGO_SETTINGS_MODULE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;blog.settings&#39;</span>
+<span class="c">#将项目目录加入到path中</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os ...</span></pre></div>
+      <a class="btn" href="http://linpower.github.io/baeshang-bu-shu-djangode-notes.html#baeshang-bu-shu-djangode-notes">Continue reading</a>
+  </div>
+</article>
+
+  <div class="pagination">
+  </div>
+
+    <footer>
+      <p>&copy; power 2015</p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p>    </footer>
+  </main>
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Power Up ",
+  "url" : "http://linpower.github.io",
+  "image": "/images/favicon.ico",
+  "description": ""
+}
+</script></body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="http://linpower.github.io/theme/css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="http://linpower.github.io/theme/css/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="http://linpower.github.io/theme/css/font-awesome.min.css">
+  <link href="http://linpower.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Power Up Atom">
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+<meta name="author" content="power" />
+<meta name="description" content="这个网站就部署在bae上的，正好自己在学python，所以就学了下使用django弄个网页。 本来很早就想写部署notes，因为官方的部署很不全，自己遇到好多坑，现在把还记得的重要过程记录一下。 这里的说明先假设在项目的根目录下创建创建了一个django的项目，名为blog，所有他的文件也就包含在/blog下面。 修改index.py 需要把项目的setting放入DJANGO_SETTINGS_MODULE变量中。 #-*- coding:utf-8 -*- import os import sys from django.core.handlers.wsgi import WSGIHandler from bae.core.wsgi import WSGIApplication # settings放入变量中 os.environ['DJANGO_SETTINGS_MODULE'] = 'blog.settings' #将项目目录加入到path中 path = os.path.join(os.path.dirname(os ..." />
+<meta name="keywords" content="BAE, django">
+<meta property="og:site_name" content="Power Up"/>
+<meta property="og:title" content="bae上部署django的notes"/>
+<meta property="og:description" content="这个网站就部署在bae上的，正好自己在学python，所以就学了下使用django弄个网页。 本来很早就想写部署notes，因为官方的部署很不全，自己遇到好多坑，现在把还记得的重要过程记录一下。 这里的说明先假设在项目的根目录下创建创建了一个django的项目，名为blog，所有他的文件也就包含在/blog下面。 修改index.py 需要把项目的setting放入DJANGO_SETTINGS_MODULE变量中。 #-*- coding:utf-8 -*- import os import sys from django.core.handlers.wsgi import WSGIHandler from bae.core.wsgi import WSGIApplication # settings放入变量中 os.environ['DJANGO_SETTINGS_MODULE'] = 'blog.settings' #将项目目录加入到path中 path = os.path.join(os.path.dirname(os ..."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://linpower.github.io/baeshang-bu-shu-djangode-notes.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2014-11-21 22:51:00+08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="http://linpower.github.io/author/power.html">
+<meta property="article:section" content="日常"/>
+<meta property="article:tag" content="BAE"/>
+<meta property="article:tag" content="django"/>
+<meta property="og:image" content="/images/favicon.ico">  <title>Power Up &ndash; bae上部署django的notes</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://linpower.github.io">
+        <img src="/images/favicon.ico" alt="Power" title="Power">
+      </a>
+      <h1><a href="http://linpower.github.io">Power</a></h1>
+      <p></p>
+      <nav>
+        <ul class="list">
+          <li><a href="http://linpower.github.io/pages/about.html#about">About</a></li>
+          <li><a href="http://linpower.github.io/pages/contact.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/LinPower" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-rss" href="/feeds/all.atom.xml" target="_blank"><i class="fa fa-rss"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <nav>
+      <a href="http://linpower.github.io">Home</a>
+      <a href="/archives.html">ARCHIVES</a>
+      <a href="/categories.html">CATEGORIES</a>
+      <a href="/tags.html">TAGS</a>
+      <a href="http://linpower.github.io/feeds/all.atom.xml">Atom</a>
+    </nav>
+
+<article>
+  <header>
+    <h1 id="baeshang-bu-shu-djangode-notes">bae上部署django的notes</h1>
+    <p>Posted on 五 21 十一月 2014 in <a href="http://linpower.github.io/category/ri-chang.html">日常</a></p>
+  </header>
+  <div>
+    <blockquote>
+<p>这个网站就部署在bae上的，正好自己在学python，所以就学了下使用django弄个网页。
+本来很早就想写部署notes，因为官方的部署很不全，自己遇到好多坑，现在把还记得的重要过程记录一下。</p>
+</blockquote>
+<p>这里的说明先假设在项目的根目录下创建创建了一个django的项目，名为blog，所有他的文件也就包含在/blog下面。</p>
+<h1>修改index.py</h1>
+<p>需要把项目的setting放入<code>DJANGO_SETTINGS_MODULE</code>变量中。</p>
+<div class="highlight"><pre><span class="c">#-*- coding:utf-8 -*-</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">django.core.handlers.wsgi</span> <span class="kn">import</span> <span class="n">WSGIHandler</span>
+<span class="kn">from</span> <span class="nn">bae.core.wsgi</span> <span class="kn">import</span> <span class="n">WSGIApplication</span>
+<span class="c"># settings放入变量中</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s">&#39;DJANGO_SETTINGS_MODULE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;blog.settings&#39;</span>
+<span class="c">#将项目目录加入到path中</span>
+<span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">__file__</span><span class="p">)),</span> <span class="s">&#39;blog&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\\</span><span class="s">&#39;</span><span class="p">,</span><span class="s">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">path</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+</pre></div>
+
+
+<h1>修改app.conf</h1>
+<p>app.conf主要是用来控制后端WEB server的处理逻辑的，可以参考<a href="http://godbae.duapp.com/?p=44#comment-12">bae技术博客</a></p>
+<p>它可以直接处理静态请求，然后把动态请求都转发给后端的webServer。</p>
+<div class="highlight"><pre>handlers:
+  # 静态请求直接返回静态资源
+  - url : /static/(.*)
+    script : /blog/blog/static/$1
+  # 动态请求转发给index.py
+  - url : /.*
+    script: index.py
+
+  - expire : .jpg modify 10 years
+  - expire : .swf modify 10 years
+  - expire : .png modify 10 years
+  - expire : .gif modify 10 years
+  - expire : .JPG modify 10 years
+  - expire : .ico modify 10 years
+</pre></div>
+
+
+<h1>数据库连接</h1>
+<p>使用数据库以及django自带的管理模块<code>admin</code>，需要将python目录下的<code>/Lib/site-packages/django/contrib/admin</code>文件夹拷贝到上面设置的静态文件路径下<code>/blog/blog/static/</code>。</p>
+<p><code>settings.py</code>需要修改下数据库连接设置：</p>
+<div class="highlight"><pre>DATABASES = {
+    &#39;default&#39;: {
+        &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+        &#39;NAME&#39;: &#39;DBNAME&#39;, 
+        &#39;USER&#39;: &#39;USERID&#39;,
+        &#39;PASSWORD&#39;: &#39;PWD&#39;,
+        &#39;HOST&#39;: &#39;sqld.duapp.com&#39;, 
+        &#39;PORT&#39;: &#39;4050&#39;, 
+    }
+}
+</pre></div>
+
+
+<h1>本地运行与上线发布</h1>
+<p>上线发布需要把<code>settings.py</code>设置为生成模式，<code>debug=False</code>。</p>
+<p>因为装bae的本地开发环境比较麻烦，所以我在本地运行时，都是直接用runserver方式开启调试模式的，这时就需要设置静态文件的目录，以便获取静态文件</p>
+<p><code>settings.py</code>修改设置：</p>
+<div class="highlight"><pre><span class="o">......</span>
+<span class="n">DEBUG</span><span class="o">=</span><span class="bp">True</span>
+<span class="o">......</span>
+<span class="n">STATIC_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">PROJECT_DIR</span><span class="p">,</span> <span class="s">&#39;static&#39;</span><span class="p">)</span>
+<span class="n">STATIC_URL</span> <span class="o">=</span> <span class="s">&#39;/static/&#39;</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">STATICFILES_DIRS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="s">&#39;css&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">STATIC_ROOT</span><span class="p">,</span> <span class="s">&#39;css&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\\</span><span class="s">&#39;</span><span class="p">,</span> <span class="s">&#39;/&#39;</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s">&#39;img&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">STATIC_ROOT</span><span class="p">,</span> <span class="s">&#39;img&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\\</span><span class="s">&#39;</span><span class="p">,</span> <span class="s">&#39;/&#39;</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s">&#39;js&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">STATIC_ROOT</span><span class="p">,</span> <span class="s">&#39;js&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\\</span><span class="s">&#39;</span><span class="p">,</span> <span class="s">&#39;/&#39;</span><span class="p">)),</span>
+<span class="p">)</span>
+</pre></div>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="http://linpower.github.io/tag/bae.html">BAE</a>
+      <a href="http://linpower.github.io/tag/django.html">django</a>
+    </p>
+  </div>
+</article>
+
+    <footer>
+      <p>&copy; power 2015</p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p>    </footer>
+  </main>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "name": "bae上部署django的notes",
+  "headline": "bae上部署django的notes",
+  "datePublished": "2014-11-21 22:51:00+08:00",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "power",
+    "url": "http://linpower.github.io/author/power.html"
+  },
+  "image": "/images/favicon.ico",
+  "url": "http://linpower.github.io/baeshang-bu-shu-djangode-notes.html",
+  "description": "这个网站就部署在bae上的，正好自己在学python，所以就学了下使用django弄个网页。 本来很早就想写部署notes，因为官方的部署很不全，自己遇到好多坑，现在把还记得的重要过程记录一下。 这里的说明先假设在项目的根目录下创建创建了一个django的项目，名为blog，所有他的文件也就包含在/blog下面。 修改index.py 需要把项目的setting放入DJANGO_SETTINGS_MODULE变量中。 #-*- coding:utf-8 -*- import os import sys from django.core.handlers.wsgi import WSGIHandler from bae.core.wsgi import WSGIApplication # settings放入变量中 os.environ['DJANGO_SETTINGS_MODULE'] = 'blog.settings' #将项目目录加入到path中 path = os.path.join(os.path.dirname(os ..."
+}
+</script></body>
+</html>

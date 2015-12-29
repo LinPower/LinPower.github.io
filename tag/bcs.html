@@ -21,7 +21,7 @@
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="http://linpower.github.io"/>
 <meta property="og:image" content="/images/favicon.ico">
-  <title>Power Up &ndash; Tag: Leetcode</title>
+  <title>Power Up &ndash; Tag: BCS</title>
 </head>
 <body>
   <aside>
@@ -54,31 +54,33 @@
 
 <article>
   <header>
-    <h2><a href="http://linpower.github.io/leetcodezuo-ti-bi-ji.html#leetcodezuo-ti-bi-ji">Leetcode做题笔记</a></h2>
+    <h2><a href="http://linpower.github.io/zai-djangozhong-shi-yong-imagefieldjiang-tu-pian-cun-chu-zai-bcszhong.html#zai-djangozhong-shi-yong-imagefieldjiang-tu-pian-cun-chu-zai-bcszhong">在django中使用ImageField将图片存储在bcs中</a></h2>
     <p>
-      Posted on 三 08 七月 2015 in <a href="http://linpower.github.io/category/bian-ma.html">编码</a>
+      Posted on 五 05 十二月 2014 in <a href="http://linpower.github.io/category/ri-chang.html">日常</a>
       &#8226; Tagged with
-      <a href="http://linpower.github.io/tag/leetcode.html">Leetcode</a>    </p>
+      <a href="http://linpower.github.io/tag/bae.html">BAE</a>,      <a href="http://linpower.github.io/tag/bcs.html">BCS</a>,      <a href="http://linpower.github.io/tag/django.html">django</a>    </p>
   </header>
   <div>
-      <h2>Two Sum</h2>
-<ul>
-<li>The return numbers in vector should be increasely order.</li>
-</ul>
-<h2>Longest Substring Without Repeating Characters</h2>
-<ul>
-<li>Record the position of every characters so far.</li>
-</ul>
-<h2>Median of Two Sorted Arrays</h2>
-<ul>
-<li>Use the method of findKth</li>
-<li>The start index should add to k</li>
-</ul>
-<h2>Longest Palindromic Substring</h2>
-<ul>
-<li>Use Manacher algorithm.<a href="http://articles.leetcode.com/2011/11/longest-palindromic-substring-part-ii.htm">reference</a></li>
-<li>Time complexity ...</li></ul>
-      <a class="btn" href="http://linpower.github.io/leetcodezuo-ti-bi-ji.html#leetcodezuo-ti-bi-ji">Continue reading</a>
+      <blockquote>
+<p>因为像bae一类的paas平台，一般都是需要将除了代码外的文件存储到其他专门的服务中。为了使本博能上传图片，就使用了bcs，在django中，ImageField默认时存储到磁盘中，为了能上传到云上，需要自己定制storage。</p>
+<p>参考<a href="http://yuanxiao.sinaapp.com/pages/122/126/310/article_index.html">python-django如何在sae中使用自带imagefield和filefield</a></p>
+</blockquote>
+<h1>定制Storage</h1>
+<p>bcs的API使用官网提供的封装好的pybcs，其他就是继承并重载FileSystemStorage。</p>
+<div class="highlight"><pre><span class="c">#-*- coding: UTF-8 -*-</span>
+<span class="kn">from</span> <span class="nn">django.core.files.storage</span> <span class="kn">import</span> <span class="n">FileSystemStorage</span>
+<span class="kn">from</span> <span class="nn">django.core.exceptions</span> <span class="kn">import</span> <span class="n">SuspiciousOperation</span>
+<span class="kn">import</span> <span class="nn">pybcs</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">uuid</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">pybcs</span><span class="o">.</span><span class="n">init_logging</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="n">AK</span> <span class="o">=</span> <span class="s">&#39;your AK</span>
+<span class="n">SK</span> <span class="o">=</span> <span class="s">&#39;your SK&#39;</span>
+<span class="n">BUCKET</span><span class="o">=</span><span class="s">&#39;your bucket&#39;</span>
+<span class="n">bcs ...</span></pre></div>
+      <a class="btn" href="http://linpower.github.io/zai-djangozhong-shi-yong-imagefieldjiang-tu-pian-cun-chu-zai-bcszhong.html#zai-djangozhong-shi-yong-imagefieldjiang-tu-pian-cun-chu-zai-bcszhong">Continue reading</a>
   </div>
 </article>
 
