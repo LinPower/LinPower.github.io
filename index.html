@@ -54,6 +54,60 @@
 
 <article>
   <header>
+    <h2><a href="http://linpower.github.io/leetcode-156-binary-tree-upside-down.html#leetcode-156-binary-tree-upside-down">Leetcode-156 Binary Tree Upside Down</a></h2>
+    <p>
+      Posted on 二 29 十二月 2015 in <a href="http://linpower.github.io/category/bian-ma.html">编码</a>
+      &#8226; Tagged with
+      <a href="http://linpower.github.io/tag/leetcode.html">Leetcode</a>    </p>
+  </header>
+  <div>
+      <blockquote>
+<p>solution: recursion</p>
+<p>tricks:</p>
+</blockquote>
+<h2>Binary Tree Upside Down</h2>
+<p>Given a binary tree where all the right nodes are either leaf nodes 
+with a sibling (a left node that shares the same parent node) or empty, 
+flip it upside down and turn it into a tree where the original right nodes 
+turned into left leaf nodes. Return the new root.</p>
+<p>For example:</p>
+<p>Given a binary tree {1,2,3,4,5},</p>
+<pre>
+    1
+   / \
+　 2  3
+  / \
+ 4  5
+</pre>
+
+<p>return the root of the binary tree [4,5,2,#,#,3,1].</p>
+<pre>
+    4
+   / \
+   5  2
+     / \
+    3  1
+</pre>
+
+<p>code:</p>
+<div class="highlight"><pre><span class="k">class</span> <span class="n">Solution</span> {
+<span class="n">public:</span>
+    <span class="n">TreeNode</span> *<span class="n">upsideDownBinaryTree</span>(<span class="n">TreeNode</span> *<span class="n">root</span>) {
+        <span class="k">if</span>(!<span class="n">root</span> || !<span class="n">root-</span>&gt;<span class="n">left</span>) <span class="k">return</span> <span class="n">root</span>;
+        <span class="n">TreeNode</span> *<span class="n">newRoot</span> = <span class="n">upsideDownBinaryTree</span>(<span class="n">root-</span>&gt;<span class="n">left</span>);
+        <span class="n">root-</span>&gt;<span class="n">left-</span>&gt;<span class="n">left</span> = <span class="n">root</span>;
+        <span class="n">root-</span>&gt;<span class="n">left-</span>&gt;<span class="n">right</span> = <span class="n">root-</span>&gt;<span class="n">right</span>;
+        <span class="n">root-</span>&gt;<span class="n">left</span> = <span class="n">root-</span>&gt;<span class="n">right</span> = <span class="n">NULL</span>;
+        <span class="k">return</span> <span class="n">newRoot</span>;
+    }
+
+};
+</pre></div>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
     <h2><a href="http://linpower.github.io/leetcodezuo-ti-bi-ji.html#leetcodezuo-ti-bi-ji">Leetcode做题笔记</a></h2>
     <p>
       Posted on 二 29 十二月 2015 in <a href="http://linpower.github.io/category/bian-ma.html">编码</a>

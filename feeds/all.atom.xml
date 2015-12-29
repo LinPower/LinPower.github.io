@@ -1,5 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Power Up</title><link href="http://linpower.github.io/" rel="alternate"></link><link href="http://linpower.github.io/feeds/all.atom.xml" rel="self"></link><id>http://linpower.github.io/</id><updated>2015-12-29T13:34:38+08:00</updated><entry><title>Leetcode做题笔记</title><link href="http://linpower.github.io/leetcodezuo-ti-bi-ji.html" rel="alternate"></link><updated>2015-12-29T13:34:38+08:00</updated><author><name>power</name></author><id>tag:linpower.github.io,2015-12-29:leetcodezuo-ti-bi-ji.html</id><summary type="html">&lt;h2&gt;Two Sum&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Power Up</title><link href="http://linpower.github.io/" rel="alternate"></link><link href="http://linpower.github.io/feeds/all.atom.xml" rel="self"></link><id>http://linpower.github.io/</id><updated>2015-12-29T14:18:54+08:00</updated><entry><title>Leetcode-156 Binary Tree Upside Down</title><link href="http://linpower.github.io/leetcode-156-binary-tree-upside-down.html" rel="alternate"></link><updated>2015-12-29T14:18:54+08:00</updated><author><name>power</name></author><id>tag:linpower.github.io,2015-12-29:leetcode-156-binary-tree-upside-down.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;solution: recursion&lt;/p&gt;
+&lt;p&gt;tricks:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;Binary Tree Upside Down&lt;/h2&gt;
+&lt;p&gt;Given a binary tree where all the right nodes are either leaf nodes 
+with a sibling (a left node that shares the same parent node) or empty, 
+flip it upside down and turn it into a tree where the original right nodes 
+turned into left leaf nodes. Return the new root.&lt;/p&gt;
+&lt;p&gt;For example:&lt;/p&gt;
+&lt;p&gt;Given a binary tree {1,2,3,4,5},&lt;/p&gt;
+&lt;pre&gt;
+    1
+   / \
+　 2  3
+  / \
+ 4  5
+&lt;/pre&gt;
+
+&lt;p&gt;return the root of the binary tree [4,5,2,#,#,3,1].&lt;/p&gt;
+&lt;pre&gt;
+    4
+   / \
+   5  2
+     / \
+    3  1
+&lt;/pre&gt;
+
+&lt;p&gt;code:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;Solution&lt;/span&gt; {
+&lt;span class="n"&gt;public:&lt;/span&gt;
+    &lt;span class="n"&gt;TreeNode&lt;/span&gt; *&lt;span class="n"&gt;upsideDownBinaryTree&lt;/span&gt;(&lt;span class="n"&gt;TreeNode&lt;/span&gt; *&lt;span class="n"&gt;root&lt;/span&gt;) {
+        &lt;span class="k"&gt;if&lt;/span&gt;(!&lt;span class="n"&gt;root&lt;/span&gt; || !&lt;span class="n"&gt;root-&lt;/span&gt;&amp;gt;&lt;span class="n"&gt;left&lt;/span&gt;) &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;root&lt;/span&gt;;
+        &lt;span class="n"&gt;TreeNode&lt;/span&gt; *&lt;span class="n"&gt;newRoot&lt;/span&gt; = &lt;span class="n"&gt;upsideDownBinaryTree&lt;/span&gt;(&lt;span class="n"&gt;root-&lt;/span&gt;&amp;gt;&lt;span class="n"&gt;left&lt;/span&gt;);
+        &lt;span class="n"&gt;root-&lt;/span&gt;&amp;gt;&lt;span class="n"&gt;left-&lt;/span&gt;&amp;gt;&lt;span class="n"&gt;left&lt;/span&gt; = &lt;span class="n"&gt;root&lt;/span&gt;;
+        &lt;span class="n"&gt;root-&lt;/span&gt;&amp;gt;&lt;span class="n"&gt;left-&lt;/span&gt;&amp;gt;&lt;span class="n"&gt;right&lt;/span&gt; = &lt;span class="n"&gt;root-&lt;/span&gt;&amp;gt;&lt;span class="n"&gt;right&lt;/span&gt;;
+        &lt;span class="n"&gt;root-&lt;/span&gt;&amp;gt;&lt;span class="n"&gt;left&lt;/span&gt; = &lt;span class="n"&gt;root-&lt;/span&gt;&amp;gt;&lt;span class="n"&gt;right&lt;/span&gt; = &lt;span class="n"&gt;NULL&lt;/span&gt;;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;newRoot&lt;/span&gt;;
+    }
+
+};
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Leetcode"></category></entry><entry><title>Leetcode做题笔记</title><link href="http://linpower.github.io/leetcodezuo-ti-bi-ji.html" rel="alternate"></link><updated>2015-12-29T13:34:38+08:00</updated><author><name>power</name></author><id>tag:linpower.github.io,2015-12-29:leetcodezuo-ti-bi-ji.html</id><summary type="html">&lt;h2&gt;Two Sum&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;The return numbers in vector should be increasely order.&lt;/li&gt;
 &lt;/ul&gt;
