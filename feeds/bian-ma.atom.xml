@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Power Up</title><link href="http://linpower.github.io/" rel="alternate"></link><link href="http://linpower.github.io/feeds/leetcode.atom.xml" rel="self"></link><id>http://linpower.github.io/</id><updated>2015-12-28T15:12:38+08:00</updated><entry><title>Leetcode做题笔记</title><link href="http://linpower.github.io/leetcodezuo-ti-bi-ji.html" rel="alternate"></link><updated>2015-12-28T15:12:38+08:00</updated><author><name>power</name></author><id>tag:linpower.github.io,2015-12-28:leetcodezuo-ti-bi-ji.html</id><summary type="html">&lt;h2&gt;Two Sum&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Power Up</title><link href="http://linpower.github.io/" rel="alternate"></link><link href="http://linpower.github.io/feeds/bian-ma.atom.xml" rel="self"></link><id>http://linpower.github.io/</id><updated>2015-12-29T13:34:38+08:00</updated><entry><title>Leetcode做题笔记</title><link href="http://linpower.github.io/leetcodezuo-ti-bi-ji.html" rel="alternate"></link><updated>2015-12-29T13:34:38+08:00</updated><author><name>power</name></author><id>tag:linpower.github.io,2015-12-29:leetcodezuo-ti-bi-ji.html</id><summary type="html">&lt;h2&gt;Two Sum&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;The return numbers in vector should be increasely order.&lt;/li&gt;
 &lt;/ul&gt;
@@ -68,4 +68,4 @@
 &lt;h2&gt;Multiply Strings&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Leading zero should be removed.&lt;/li&gt;
-&lt;/ul&gt;</summary></entry></feed>
+&lt;/ul&gt;</summary><category term="Leetcode"></category><category term="Notes"></category></entry></feed>
