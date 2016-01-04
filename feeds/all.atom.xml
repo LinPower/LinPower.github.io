@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Power Up</title><link href="http://linpower.github.io/" rel="alternate"></link><link href="http://linpower.github.io/feeds/all.atom.xml" rel="self"></link><id>http://linpower.github.io/</id><updated>2015-07-08T20:04:00+08:00</updated><entry><title>Leetcode做题笔记</title><link href="http://linpower.github.io/leetcodezuo-ti-bi-ji.html" rel="alternate"></link><updated>2015-07-08T20:04:00+08:00</updated><author><name>power</name></author><id>tag:linpower.github.io,2015-07-08:leetcodezuo-ti-bi-ji.html</id><summary type="html">&lt;h2&gt;Two Sum&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Power Up</title><link href="http://linpower.github.io/" rel="alternate"></link><link href="http://linpower.github.io/feeds/all.atom.xml" rel="self"></link><id>http://linpower.github.io/</id><updated>2015-08-09T14:40:00+08:00</updated><entry><title>Web Crawler阅读笔记</title><link href="http://linpower.github.io/web-crawleryue-du-bi-ji.html" rel="alternate"></link><updated>2015-08-09T14:40:00+08:00</updated><author><name>power</name></author><id>tag:linpower.github.io,2015-08-09:web-crawleryue-du-bi-ji.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;看了下爬虫是怎么设计的，虽然材料有点老旧，但可以学到许多基础知识，&lt;a href="http://nlp.stanford.edu/IR-book/html/htmledition/web-crawling-and-indexes-1.html"&gt;WebCrawler&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1&gt;1 Overview&lt;/h1&gt;
+&lt;p&gt;爬虫的目的：快速高效地收集尽可能多的有用的网页。&lt;/p&gt;
+&lt;p&gt;必须满足的特性：鲁棒性（Robustness），可能会遇到一些页面误导爬虫陷入无限循环中（honeypot）；礼节性（Politeness），遵守一些隐含的或者明确的策略调整访问页面的速率（如robots协议）。&lt;/p&gt;
+&lt;p&gt;应该满足的特性：分布式地（Distributed），可伸缩（Scalable），高效的（Performance and efficiency），保持最新（Freshness），功能易于扩展（Extensible）&lt;/p&gt;
+&lt;h1&gt;2 Crawling&lt;/h1&gt;
+&lt;p&gt;爬虫从一些种子集（seed set）URL开始爬取内容，将爬取的内容进行解析，抽取出文本放入文本索引器，抽取出url放入URL frontier。之后爬虫从url frontier获取一个url，继续爬取。&lt;/p&gt;
+&lt;h2&gt;2.1 Architecture&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="basic craler architecture" src="/images/crawler_architecture.png" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="distributing crawler architecture" src="/images/distributing_crawler_architecture.png" /&gt;&lt;/p&gt;
+&lt;h2&gt;2.2 DNS resolution&lt;/h2&gt;
+&lt;p&gt;DNS解析是一个瓶颈。&lt;/p&gt;
+&lt;p&gt;解决方法：缓存 -&amp;gt; 标准库中的实现通常是同步的，一个请求得等到之前请求完成了才开始执行 -&amp;gt; 实现一个异步版本&lt;/p&gt;
+&lt;h2&gt;2.3 URL frontier&lt;/h2&gt;
+&lt;p&gt;（1）两个重要的考虑：高质量且更新频繁的页面需要优先作为频繁爬取的对象；关于礼节性，需避免在很短的时间间隔内重复爬取一个host。&lt;/p&gt;
+&lt;p&gt;（2）frontier分成两部分：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="frontier" src="/images/crawler_fronter.png" /&gt;&lt;/p&gt;
+&lt;p&gt;（3）过程：crawler从heap中获取一个队列的可访问时间，等到该时间时，获取该队列（设为j）的头URL（设为u），获取u的内容。结束后，判断这个队列是否为空。若空，则从front queue中获取URL（设为v）来填充它。对于选择哪个front queue，是按照优先级获取的（如一个随机获取的方案，按照优先级的高低，选中的概率不同），保持优先级高的更快流向back queue。先判断back queue是否已经有v的队列，有则放入该队列，并且继续到front queues中获取下一个，直到队列j不空为止。然后更新j的时间，放入heap中。&lt;/p&gt;
+&lt;h1&gt;3 Distributing indexes&lt;/h1&gt;
+&lt;p&gt;两种方式：（1）根据术语（关键字？）分割，即全局索引组织。（2）根据文档分割，即本地索引组织。&lt;/p&gt;
+&lt;p&gt;前者，将术语划分为各自独立的子集，每个子集存于一个节点。当查询时，把请求发给所有包含查询关键字的节点即可，最后将结果取交集。&lt;/p&gt;
+&lt;p&gt;后者，将文档划分为子集，每个节点存储一个子集。当查询时，需将请求发往所有节点，最后将结果取并集。&lt;/p&gt;
+&lt;h1&gt;4 Connectivity servers&lt;/h1&gt;
+&lt;p&gt;建图 -&amp;gt; 邻接表 -&amp;gt; 某一行可以由它之前的7行中的一行变换得到或者直接从空行产生，用一个3bits表示选择了哪一行，然后标记元素状态（修改，删除或添加） -&amp;gt; 选择由哪一行得到，需由一个启发函数判断两者的相似度，如果超过阈值则判断为相似，可以由这一行得到 -&amp;gt; 相似度阈值太高，则会导致许多需重新生成的行，太低则会导致恢复一行的数据需要使用到太多的间接行。&lt;/p&gt;</summary><category term="python"></category><category term="Crawler"></category></entry><entry><title>Leetcode做题笔记</title><link href="http://linpower.github.io/leetcodezuo-ti-bi-ji.html" rel="alternate"></link><updated>2015-07-08T20:04:00+08:00</updated><author><name>power</name></author><id>tag:linpower.github.io,2015-07-08:leetcodezuo-ti-bi-ji.html</id><summary type="html">&lt;h2&gt;Two Sum&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;The return numbers in vector should be increasely order.&lt;/li&gt;
 &lt;/ul&gt;
@@ -74,7 +99,137 @@
 &lt;h2&gt;原因&lt;/h2&gt;
 &lt;p&gt;原因就是，不知道什么时候，在用户的目录下创建了一个chrome打开新窗口图标的图标，使得系统中存在两个chrome图标。&lt;/p&gt;
 &lt;h2&gt;解决方法&lt;/h2&gt;
-&lt;p&gt;将&lt;code&gt;~/.local/share/applications/google-chrome.desktop&lt;/code&gt;删除掉，这样就仅保留系统全局的chrome图标。&lt;/p&gt;</summary><category term="Ubuntu"></category></entry><entry><title>误删系统文件作死</title><link href="http://linpower.github.io/wu-shan-xi-tong-wen-jian-zuo-si.html" rel="alternate"></link><updated>2015-03-12T20:25:00+08:00</updated><author><name>power</name></author><id>tag:linpower.github.io,2015-03-12:wu-shan-xi-tong-wen-jian-zuo-si.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;将&lt;code&gt;~/.local/share/applications/google-chrome.desktop&lt;/code&gt;删除掉，这样就仅保留系统全局的chrome图标。&lt;/p&gt;</summary><category term="Ubuntu"></category></entry><entry><title>AspectJ学习之Introduction</title><link href="http://linpower.github.io/aspectjxue-xi-zhi-introduction.html" rel="alternate"></link><updated>2015-03-30T18:32:00+08:00</updated><author><name>power</name></author><id>tag:linpower.github.io,2015-03-30:aspectjxue-xi-zhi-introduction.html</id><summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;a href="http://eclipse.org/aspectj/doc/released/progguide/index.html"&gt;The AspectJ Programming Guide&lt;/a&gt;第一章的笔记&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1&gt;1. 四个constructs：pointcuts, advice, inter-type declarations and aspects&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Pointcuts and advice dynamically affect program flow&lt;/li&gt;
+&lt;li&gt;inter-type declarations statically affects a program’s class hierarchy&lt;/li&gt;
+&lt;li&gt;and aspects encapsulate these new constructs.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A join point is a well-defined point in the program flow. A pointcut picks out certain join points and values at those points. A piece of advice is code that is executed when a join point is reached. These are the dynamic parts of AspectJ.（动态织入）&lt;/p&gt;
+&lt;p&gt;AspectJ also has different kinds of inter-type declarations that allow the programmer to modify a program’s static structure, namely, the members of its classes and the relationship between classes.（静态织入）&lt;/p&gt;
+&lt;p&gt;AspectJ’s aspect are the unit of modularity for crosscutting concerns. They behave somewhat like Java classes, but may also include pointcuts, advice and inter-type declarations.（类似于class）&lt;/p&gt;
+&lt;h1&gt;2.定义pointcut点&lt;/h1&gt;
+&lt;p&gt;全名：关键字call&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;call(void Point.setX(int))
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;逻辑语句：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;call(void Point.setX(int)) || call(void Point.setY(int))
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;别名/命名：move()代表这个pointcut&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pointcut move():
+    call(void FigureElement.setXY(int,int)) ||
+    call(void Point.setX(int))
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;pointcut的pointcut：关键字cflow，控制流（control-point），监测获取整个控制流&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;cflow(move())
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;3.advince：&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Before advince：在执行pointcut的方法之前执行（但在获得参数后）&lt;/li&gt;
+&lt;li&gt;After advince：在执行pointcut的方法之后执行（但在return之前）&lt;/li&gt;
+&lt;li&gt;Around advince：貌似是可以指定在方法运行到什么地方的时候执行该advince（on a join point runs as the join point is reached, and has explicit control over whether the program proceeds with the join point.）&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;暴露pointcut的上下文：&lt;/p&gt;
+&lt;p&gt;格式如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;after(FigureElement fe, int x, int y) returning:
+    ...SomePointcut... {
+    ...SomeBody...
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;表示这个AfterAdvince可以获得pointcut的环境中的三个参数。使用匿名pointcut：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;after(FigureElement fe, int x, int y) returning:
+    call(void FigureElement.setXY(int, int)) &amp;amp;&amp;amp; target(fe) &amp;amp;&amp;amp; args(x, y) {
+    System.out.println(fe + &amp;quot; moved to (&amp;quot; + x + &amp;quot;, &amp;quot; + y + &amp;quot;)&amp;quot;);
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;使用命名的pointcut：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pointcut setXY(FigureElement fe, int x, int y):
+    call(void FigureElement.setXY(int, int)) &amp;amp;&amp;amp; target(fe) &amp;amp;&amp;amp; args(x, y);
+after(FigureElement fe, int x, int y) returning: setXY(fe, x, y) {
+    System.out.println(fe + &amp;quot; moved to (&amp;quot; + x + &amp;quot;, &amp;quot; + y + &amp;quot;).&amp;quot;);
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;4. 类型间声明(Inter-type declarations)&lt;/h1&gt;
+&lt;p&gt;是切入类和它们层次结构的声明。定义一个Point类的观察者：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;aspect PointObserving {
+    private Vector Point.observers = new Vector();
+    ...
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;添加访问这个私有成员的方法&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;aspect PointObserving {
+    private Vector Point.observers = new Vector();
+
+    public static void addObserver(Point p, Screen s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Point p, Screen s) {
+        p.observers.remove(s);
+    }
+    ...
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;添加切入点changes，以便观察变化&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;aspect PointObserving {
+    private Vector Point.observers = new Vector();
+
+    public static void addObserver(Point p, Screen s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Point p, Screen s) {
+        p.observers.remove(s);
+    }
+
+    pointcut changes(Point p): target(p) &amp;amp;amp;&amp;amp;amp; call(void Point.set*(int));
+
+    after(Point p): changes(p) {
+        Iterator iter = p.observers.iterator();
+        while ( iter.hasNext() ) {
+            updateObserver(p, (Screen)iter.next());
+        }
+    }
+
+    static void updateObserver(Point p, Screen s) {
+        s.display(p);
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;5. 切面（Aspect）&lt;/h1&gt;
+&lt;p&gt;Aspects wrap up pointcuts, advice, and inter-type declarations in a a modular unit of crosscutting implementation. 类似一个类。&lt;/p&gt;
+&lt;p&gt;不可以new出一个Aspect，默认情况它是单例的。这意味着，如果需要保持状态的话，advince可以使用一个非静态域：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;aspect Logging {
+    OutputStream logStream = System.err;
+
+    before(): move() {
+        logStream.println(&amp;quot;about to move&amp;quot;);
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="AspectJ"></category></entry><entry><title>误删系统文件作死</title><link href="http://linpower.github.io/wu-shan-xi-tong-wen-jian-zuo-si.html" rel="alternate"></link><updated>2015-03-12T20:25:00+08:00</updated><author><name>power</name></author><id>tag:linpower.github.io,2015-03-12:wu-shan-xi-tong-wen-jian-zuo-si.html</id><summary type="html">&lt;blockquote&gt;
 &lt;p&gt;背景：今天网卡一直抽风，就怀疑是不是网卡驱动不稳定（因为这个网卡驱动是当时出的一个版本），就想起是不是去更新一下。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;在更新无线网卡时，不慎（作死）删除了&lt;code&gt;/lib/modules/3.13.0-32-generic/kernel/drivers/misc/eeprom/eeprom_93cx6.ko&lt;/code&gt;、&lt;code&gt;/lib/modules/3.13.0-32-generic/kernel/lib/crc-ccitt.ko&lt;/code&gt;, &lt;code&gt;/lib/modules/3.13.0-32-generic/kernel/net/wireless/cfg80211.ko&lt;/code&gt;, &lt;code&gt;/lib/modules/3.13.0-32-generic/kernel/net/mac80211/mac80211.ko&lt;/code&gt;等，而且恢复不了。&lt;/p&gt;

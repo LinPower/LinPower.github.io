@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="http://linpower.github.io/theme/css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="http://linpower.github.io/theme/css/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="http://linpower.github.io/theme/css/font-awesome.min.css">
+  <link href="http://linpower.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Power Up Atom">
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+  <meta name="author" content="power" />
+  <meta name="description" content="" />
+<meta property="og:site_name" content="Power Up"/>
+<meta property="og:type" content="blog"/>
+<meta property="og:title" content="Power Up"/>
+<meta property="og:description" content=""/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://linpower.github.io"/>
+<meta property="og:image" content="/images/favicon.ico">
+  <title>Power Up &ndash; Category: Reading</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://linpower.github.io">
+        <img src="/images/favicon.ico" alt="Power" title="Power">
+      </a>
+      <h1><a href="http://linpower.github.io">Power</a></h1>
+      <p></p>
+      <nav>
+        <ul class="list">
+          <li><a href="http://linpower.github.io/pages/about.html#about">About</a></li>
+          <li><a href="http://linpower.github.io/pages/contact.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/LinPower" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-rss" href="/feeds/all.atom.xml" target="_blank"><i class="fa fa-rss"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <nav>
+      <a href="http://linpower.github.io">Home</a>
+      <a href="/archives.html">ARCHIVES</a>
+      <a href="/categories.html">CATEGORIES</a>
+      <a href="/tags.html">TAGS</a>
+      <a href="http://linpower.github.io/feeds/all.atom.xml">Atom</a>
+    </nav>
+
+<article>
+  <header>
+    <h2><a href="http://linpower.github.io/web-crawleryue-du-bi-ji.html#web-crawleryue-du-bi-ji">Web Crawler阅读笔记</a></h2>
+    <p>
+      Posted on 日 09 八月 2015 in <a href="http://linpower.github.io/category/reading.html">Reading</a>
+      &#8226; Tagged with
+      <a href="http://linpower.github.io/tag/python.html">python</a>,      <a href="http://linpower.github.io/tag/crawler.html">Crawler</a>    </p>
+  </header>
+  <div>
+      <blockquote>
+<p>看了下爬虫是怎么设计的，虽然材料有点老旧，但可以学到许多基础知识，<a href="http://nlp.stanford.edu/IR-book/html/htmledition/web-crawling-and-indexes-1.html">WebCrawler</a></p>
+</blockquote>
+<h1>1 Overview</h1>
+<p>爬虫的目的：快速高效地收集尽可能多的有用的网页。</p>
+<p>必须满足的特性：鲁棒性（Robustness），可能会遇到一些页面误导爬虫陷入无限循环中（honeypot）；礼节性（Politeness），遵守一些隐含的或者明确的策略调整访问页面的速率（如robots协议）。</p>
+<p>应该满足的特性：分布式地（Distributed），可伸缩（Scalable），高效的（Performance and efficiency），保持最新（Freshness），功能易于扩展（Extensible）</p>
+<h1>2 Crawling</h1>
+<p>爬虫从一些种子集（seed set）URL开始爬取内容，将爬取的内容进行解析，抽取出文本放入文本索引器，抽取出url放入URL frontier。之后爬虫从url frontier获取一个url，继续爬取。</p>
+<h2>2.1 Architecture</h2>
+<p><img alt="basic craler architecture" src="/images/crawler_architecture.png" /></p>
+<p><img alt="distributing crawler architecture" src="/images/distributing_crawler_architecture.png" /></p>
+<h2>2.2 DNS resolution ...</h2>
+      <a class="btn" href="http://linpower.github.io/web-crawleryue-du-bi-ji.html#web-crawleryue-du-bi-ji">Continue reading</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://linpower.github.io/aspectjxue-xi-zhi-introduction.html#aspectjxue-xi-zhi-introduction">AspectJ学习之Introduction</a></h2>
+    <p>
+      Posted on 一 30 三月 2015 in <a href="http://linpower.github.io/category/reading.html">Reading</a>
+      &#8226; Tagged with
+      <a href="http://linpower.github.io/tag/aspectj.html">AspectJ</a>    </p>
+  </header>
+  <div>
+      <blockquote>
+<p><a href="http://eclipse.org/aspectj/doc/released/progguide/index.html">The AspectJ Programming Guide</a>第一章的笔记</p>
+</blockquote>
+<h1>1. 四个constructs：pointcuts, advice, inter-type declarations and aspects</h1>
+<ul>
+<li>Pointcuts and advice dynamically affect program flow</li>
+<li>inter-type declarations statically affects a program’s class hierarchy</li>
+<li>and aspects encapsulate these new constructs.</li>
+</ul>
+<p>A join point is a well-defined point in the program flow. A pointcut picks out ...</p>
+      <a class="btn" href="http://linpower.github.io/aspectjxue-xi-zhi-introduction.html#aspectjxue-xi-zhi-introduction">Continue reading</a>
+  </div>
+</article>
+
+  <div class="pagination">
+  </div>
+
+    <footer>
+      <p>&copy; power 2015</p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p>    </footer>
+  </main>
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Power Up ",
+  "url" : "http://linpower.github.io",
+  "image": "/images/favicon.ico",
+  "description": ""
+}
+</script></body>
+</html>

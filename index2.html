@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="http://linpower.github.io/theme/css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="http://linpower.github.io/theme/css/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="http://linpower.github.io/theme/css/font-awesome.min.css">
+  <link href="http://linpower.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Power Up Atom">
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+  <meta name="author" content="power" />
+  <meta name="description" content="" />
+<meta property="og:site_name" content="Power Up"/>
+<meta property="og:type" content="blog"/>
+<meta property="og:title" content="Power Up"/>
+<meta property="og:description" content=""/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://linpower.github.io"/>
+<meta property="og:image" content="/images/favicon.ico">
+  <title>Power Up</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://linpower.github.io">
+        <img src="/images/favicon.ico" alt="Power" title="Power">
+      </a>
+      <h1><a href="http://linpower.github.io">Power</a></h1>
+      <p></p>
+      <nav>
+        <ul class="list">
+          <li><a href="http://linpower.github.io/pages/about.html#about">About</a></li>
+          <li><a href="http://linpower.github.io/pages/contact.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/LinPower" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-rss" href="/feeds/all.atom.xml" target="_blank"><i class="fa fa-rss"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <nav>
+      <a href="http://linpower.github.io">Home</a>
+      <a href="/archives.html">ARCHIVES</a>
+      <a href="/categories.html">CATEGORIES</a>
+      <a href="/tags.html">TAGS</a>
+      <a href="http://linpower.github.io/feeds/all.atom.xml">Atom</a>
+    </nav>
+
+<article>
+  <header>
+    <h2><a href="http://linpower.github.io/win7xia-pei-zhi-sublime2he-mingwyong-yu-bian-yi-c.html#win7xia-pei-zhi-sublime2he-mingwyong-yu-bian-yi-c">Win7下配置sublime2和MinGW用于编译C++</a></h2>
+    <p>
+      Posted on 二 04 十一月 2014 in <a href="http://linpower.github.io/category/ri-chang.html">日常</a>
+      &#8226; Tagged with
+      <a href="http://linpower.github.io/tag/sublime.html">sublime</a>    </p>
+  </header>
+  <div>
+      <blockquote>
+<p>在windows下使用sublime2时，有一个很不方便的地方，运行c++时不能使用命令行输入数据，这给调试小程序带来了麻烦，尝试了一下各种方法终于搞定。</p>
+</blockquote>
+<p>sublime2和MinGW的安装配置不提及，网上资料非常多。</p>
+<p>最重要的的是修改<code>C++.sublime-build</code>文件：</p>
+<div class="highlight"><pre>{
+    &quot;cmd&quot;: [&quot;g++&quot;, &quot;-std=c++11&quot;, &quot;-Wall&quot;, &quot;<span class="cp">${</span><span class="nb">file</span><span class="cp">}</span>&quot;, &quot;-o&quot;, &quot;<span class="cp">${</span><span class="n">file_path</span><span class="cp">}</span>/<span class="cp">${</span><span class="n">file_base_name</span><span class="cp">}</span>&quot;],
+    &quot;file_regex&quot;: &quot;^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$&quot;,
+    &quot;working_dir&quot;: &quot;<span class="cp">${</span><span class="n">file_path</span><span class="cp">}</span>&quot;,
+    &quot;selector&quot;: &quot;source.c, source.c++&quot;,
+
+    &quot;variants&quot;:
+    [
+        {
+            &quot;name&quot;: &quot;Run&quot;,
+            &quot;shell&quot;: true,
+            &quot;cmd&quot;: [&quot;start&quot;, &quot;cmd&quot;, &quot;/c&quot;, &quot;<span class="cp">${</span><span class="n">file_path</span><span class="cp">}</span>/<span class="cp">${</span><span class="n">file_base_name</span><span class="cp">}</span> <span class="err">&amp;&amp;</span> pause&quot;]
+        }
+    ]
+}
+</pre></div>
+
+
+<p>如果运行不了，可以按快捷键<code>Ctrl + `</code>调出sublime的控制台查看错误信息。</p>
+<p>如果是因为文件名带有中文导致编码错误，可以在<code>sublime_plugin.py</code>中添加：</p>
+<div class="highlight"><pre>reload(sys)
+sys.setdefaultencoding(&#39;utf-8&#39;)
+</pre></div>
+
+
+<p>但是中文路径名始终没找到解决办法。</p>
+<hr />
+  </div>
+</article>
+
+  <div class="pagination">
+      <a class="btn float-right" href="http://linpower.github.io/index.html">
+        Newer Posts <i class="fa fa-angle-right"></i>
+      </a>
+  </div>
+
+    <footer>
+      <p>&copy; power 2015</p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p>    </footer>
+  </main>
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Power Up ",
+  "url" : "http://linpower.github.io",
+  "image": "/images/favicon.ico",
+  "description": ""
+}
+</script></body>
+</html>

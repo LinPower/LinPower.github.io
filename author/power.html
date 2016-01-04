@@ -54,6 +54,32 @@
 
 <article>
   <header>
+    <h2><a href="http://linpower.github.io/web-crawleryue-du-bi-ji.html#web-crawleryue-du-bi-ji">Web Crawler阅读笔记</a></h2>
+    <p>
+      Posted on 日 09 八月 2015 in <a href="http://linpower.github.io/category/reading.html">Reading</a>
+      &#8226; Tagged with
+      <a href="http://linpower.github.io/tag/python.html">python</a>,      <a href="http://linpower.github.io/tag/crawler.html">Crawler</a>    </p>
+  </header>
+  <div>
+      <blockquote>
+<p>看了下爬虫是怎么设计的，虽然材料有点老旧，但可以学到许多基础知识，<a href="http://nlp.stanford.edu/IR-book/html/htmledition/web-crawling-and-indexes-1.html">WebCrawler</a></p>
+</blockquote>
+<h1>1 Overview</h1>
+<p>爬虫的目的：快速高效地收集尽可能多的有用的网页。</p>
+<p>必须满足的特性：鲁棒性（Robustness），可能会遇到一些页面误导爬虫陷入无限循环中（honeypot）；礼节性（Politeness），遵守一些隐含的或者明确的策略调整访问页面的速率（如robots协议）。</p>
+<p>应该满足的特性：分布式地（Distributed），可伸缩（Scalable），高效的（Performance and efficiency），保持最新（Freshness），功能易于扩展（Extensible）</p>
+<h1>2 Crawling</h1>
+<p>爬虫从一些种子集（seed set）URL开始爬取内容，将爬取的内容进行解析，抽取出文本放入文本索引器，抽取出url放入URL frontier。之后爬虫从url frontier获取一个url，继续爬取。</p>
+<h2>2.1 Architecture</h2>
+<p><img alt="basic craler architecture" src="/images/crawler_architecture.png" /></p>
+<p><img alt="distributing crawler architecture" src="/images/distributing_crawler_architecture.png" /></p>
+<h2>2.2 DNS resolution ...</h2>
+      <a class="btn" href="http://linpower.github.io/web-crawleryue-du-bi-ji.html#web-crawleryue-du-bi-ji">Continue reading</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
     <h2><a href="http://linpower.github.io/leetcodezuo-ti-bi-ji.html#leetcodezuo-ti-bi-ji">Leetcode做题笔记</a></h2>
     <p>
       Posted on 三 08 七月 2015 in <a href="http://linpower.github.io/category/bian-ma.html">编码</a>
@@ -99,6 +125,29 @@
 <h2>解决方法</h2>
 <p>将<code>~/.local/share/applications/google-chrome.desktop</code>删除掉，这样就仅保留系统全局的chrome图标。</p>
       <a class="btn" href="http://linpower.github.io/ubuntuchu-xian-xiang-tong-tu-biao.html#ubuntuchu-xian-xiang-tong-tu-biao">Continue reading</a>
+  </div>
+  <hr />
+</article>
+<article>
+  <header>
+    <h2><a href="http://linpower.github.io/aspectjxue-xi-zhi-introduction.html#aspectjxue-xi-zhi-introduction">AspectJ学习之Introduction</a></h2>
+    <p>
+      Posted on 一 30 三月 2015 in <a href="http://linpower.github.io/category/reading.html">Reading</a>
+      &#8226; Tagged with
+      <a href="http://linpower.github.io/tag/aspectj.html">AspectJ</a>    </p>
+  </header>
+  <div>
+      <blockquote>
+<p><a href="http://eclipse.org/aspectj/doc/released/progguide/index.html">The AspectJ Programming Guide</a>第一章的笔记</p>
+</blockquote>
+<h1>1. 四个constructs：pointcuts, advice, inter-type declarations and aspects</h1>
+<ul>
+<li>Pointcuts and advice dynamically affect program flow</li>
+<li>inter-type declarations statically affects a program’s class hierarchy</li>
+<li>and aspects encapsulate these new constructs.</li>
+</ul>
+<p>A join point is a well-defined point in the program flow. A pointcut picks out ...</p>
+      <a class="btn" href="http://linpower.github.io/aspectjxue-xi-zhi-introduction.html#aspectjxue-xi-zhi-introduction">Continue reading</a>
   </div>
   <hr />
 </article>
@@ -256,47 +305,12 @@
 <span class="cp">#include &lt;cstring ...</span></pre></div>
       <a class="btn" href="http://linpower.github.io/gcj2013-bti-manage-your-energy.html#gcj2013-bti-manage-your-energy">Continue reading</a>
   </div>
-  <hr />
-</article>
-<article>
-  <header>
-    <h2><a href="http://linpower.github.io/win7xia-pei-zhi-sublime2he-mingwyong-yu-bian-yi-c.html#win7xia-pei-zhi-sublime2he-mingwyong-yu-bian-yi-c">Win7下配置sublime2和MinGW用于编译C++</a></h2>
-    <p>
-      Posted on 二 04 十一月 2014 in <a href="http://linpower.github.io/category/ri-chang.html">日常</a>
-      &#8226; Tagged with
-      <a href="http://linpower.github.io/tag/sublime.html">sublime</a>    </p>
-  </header>
-  <div>
-      <blockquote>
-<p>在windows下使用sublime2时，有一个很不方便的地方，运行c++时不能使用命令行输入数据，这给调试小程序带来了麻烦，尝试了一下各种方法终于搞定。</p>
-</blockquote>
-<p>sublime2和MinGW的安装配置不提及，网上资料非常多。</p>
-<p>最重要的的是修改<code>C++.sublime-build</code>文件：</p>
-<div class="highlight"><pre>{
-    &quot;cmd&quot;: [&quot;g++&quot;, &quot;-std=c++11&quot;, &quot;-Wall&quot;, &quot;<span class="cp">${</span><span class="nb">file</span><span class="cp">}</span>&quot;, &quot;-o&quot;, &quot;<span class="cp">${</span><span class="n">file_path</span><span class="cp">}</span>/<span class="cp">${</span><span class="n">file_base_name</span><span class="cp">}</span>&quot;],
-    &quot;file_regex&quot;: &quot;^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$&quot;,
-    &quot;working_dir&quot;: &quot;<span class="cp">${</span><span class="n">file_path</span><span class="cp">}</span>&quot;,
-    &quot;selector&quot;: &quot;source.c, source.c++&quot;,
-
-    &quot;variants&quot;:
-    [
-        {
-            &quot;name&quot;: &quot;Run&quot;,
-            &quot;shell&quot;: true,
-            &quot;cmd&quot;: [&quot;start&quot;, &quot;cmd&quot;, &quot;/c&quot;, &quot;<span class="cp">${</span><span class="n">file_path</span><span class="cp">}</span>/<span class="cp">${</span><span class="n">file_base_name</span><span class="cp">}</span> <span class="err">&amp;&amp;</span> pause&quot;]
-        }
-    ]
-}
-</pre></div>
-
-
-<p>如果运行不了，可以按快捷键<code>Ctrl + `</code>调出sublime的控制台查看错误信息。</p>
-<p>如果是因为文件名带有中文导致编码错误，可以在 ...</p>
-      <a class="btn" href="http://linpower.github.io/win7xia-pei-zhi-sublime2he-mingwyong-yu-bian-yi-c.html#win7xia-pei-zhi-sublime2he-mingwyong-yu-bian-yi-c">Continue reading</a>
-  </div>
 </article>
 
   <div class="pagination">
+    <a class="btn" href="http://linpower.github.io/author/power2.html">
+      <i class="fa fa-angle-left"></i> Older Posts
+    </a>
   </div>
 
     <footer>

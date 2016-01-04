@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="http://linpower.github.io/theme/css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="http://linpower.github.io/theme/css/pygments.min.css">
+  <link rel="stylesheet" type="text/css" href="http://linpower.github.io/theme/css/font-awesome.min.css">
+  <link href="http://linpower.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Power Up Atom">
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+<meta name="author" content="power" />
+<meta name="description" content="The AspectJ Programming Guide第一章的笔记 1. 四个constructs：pointcuts, advice, inter-type declarations and aspects Pointcuts and advice dynamically affect program flow inter-type declarations statically affects a program’s class hierarchy and aspects encapsulate these new constructs. A join point is a well-defined point in the program flow. A pointcut picks out ..." />
+<meta name="keywords" content="AspectJ">
+<meta property="og:site_name" content="Power Up"/>
+<meta property="og:title" content="AspectJ学习之Introduction"/>
+<meta property="og:description" content="The AspectJ Programming Guide第一章的笔记 1. 四个constructs：pointcuts, advice, inter-type declarations and aspects Pointcuts and advice dynamically affect program flow inter-type declarations statically affects a program’s class hierarchy and aspects encapsulate these new constructs. A join point is a well-defined point in the program flow. A pointcut picks out ..."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="http://linpower.github.io/aspectjxue-xi-zhi-introduction.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2015-03-30 18:32:00+08:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="http://linpower.github.io/author/power.html">
+<meta property="article:section" content="Reading"/>
+<meta property="article:tag" content="AspectJ"/>
+<meta property="og:image" content="/images/favicon.ico">  <title>Power Up &ndash; AspectJ学习之Introduction</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="http://linpower.github.io">
+        <img src="/images/favicon.ico" alt="Power" title="Power">
+      </a>
+      <h1><a href="http://linpower.github.io">Power</a></h1>
+      <p></p>
+      <nav>
+        <ul class="list">
+          <li><a href="http://linpower.github.io/pages/about.html#about">About</a></li>
+          <li><a href="http://linpower.github.io/pages/contact.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/LinPower" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-rss" href="/feeds/all.atom.xml" target="_blank"><i class="fa fa-rss"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <nav>
+      <a href="http://linpower.github.io">Home</a>
+      <a href="/archives.html">ARCHIVES</a>
+      <a href="/categories.html">CATEGORIES</a>
+      <a href="/tags.html">TAGS</a>
+      <a href="http://linpower.github.io/feeds/all.atom.xml">Atom</a>
+    </nav>
+
+<article>
+  <header>
+    <h1 id="aspectjxue-xi-zhi-introduction">AspectJ学习之Introduction</h1>
+    <p>Posted on 一 30 三月 2015 in <a href="http://linpower.github.io/category/reading.html">Reading</a></p>
+  </header>
+  <div>
+    <blockquote>
+<p><a href="http://eclipse.org/aspectj/doc/released/progguide/index.html">The AspectJ Programming Guide</a>第一章的笔记</p>
+</blockquote>
+<h1>1. 四个constructs：pointcuts, advice, inter-type declarations and aspects</h1>
+<ul>
+<li>Pointcuts and advice dynamically affect program flow</li>
+<li>inter-type declarations statically affects a program’s class hierarchy</li>
+<li>and aspects encapsulate these new constructs.</li>
+</ul>
+<p>A join point is a well-defined point in the program flow. A pointcut picks out certain join points and values at those points. A piece of advice is code that is executed when a join point is reached. These are the dynamic parts of AspectJ.（动态织入）</p>
+<p>AspectJ also has different kinds of inter-type declarations that allow the programmer to modify a program’s static structure, namely, the members of its classes and the relationship between classes.（静态织入）</p>
+<p>AspectJ’s aspect are the unit of modularity for crosscutting concerns. They behave somewhat like Java classes, but may also include pointcuts, advice and inter-type declarations.（类似于class）</p>
+<h1>2.定义pointcut点</h1>
+<p>全名：关键字call</p>
+<div class="highlight"><pre>call(void Point.setX(int))
+</pre></div>
+
+
+<p>逻辑语句：</p>
+<div class="highlight"><pre>call(void Point.setX(int)) || call(void Point.setY(int))
+</pre></div>
+
+
+<p>别名/命名：move()代表这个pointcut</p>
+<div class="highlight"><pre>pointcut move():
+    call(void FigureElement.setXY(int,int)) ||
+    call(void Point.setX(int))
+</pre></div>
+
+
+<p>pointcut的pointcut：关键字cflow，控制流（control-point），监测获取整个控制流</p>
+<div class="highlight"><pre>cflow(move())
+</pre></div>
+
+
+<h1>3.advince：</h1>
+<ul>
+<li>Before advince：在执行pointcut的方法之前执行（但在获得参数后）</li>
+<li>After advince：在执行pointcut的方法之后执行（但在return之前）</li>
+<li>Around advince：貌似是可以指定在方法运行到什么地方的时候执行该advince（on a join point runs as the join point is reached, and has explicit control over whether the program proceeds with the join point.）</li>
+<li>
+<p>暴露pointcut的上下文：</p>
+<p>格式如下：</p>
+<div class="highlight"><pre>after(FigureElement fe, int x, int y) returning:
+    ...SomePointcut... {
+    ...SomeBody...
+}
+</pre></div>
+
+
+<p>表示这个AfterAdvince可以获得pointcut的环境中的三个参数。使用匿名pointcut：</p>
+<div class="highlight"><pre>after(FigureElement fe, int x, int y) returning:
+    call(void FigureElement.setXY(int, int)) &amp;&amp; target(fe) &amp;&amp; args(x, y) {
+    System.out.println(fe + &quot; moved to (&quot; + x + &quot;, &quot; + y + &quot;)&quot;);
+}
+</pre></div>
+
+
+<p>使用命名的pointcut：</p>
+<div class="highlight"><pre>pointcut setXY(FigureElement fe, int x, int y):
+    call(void FigureElement.setXY(int, int)) &amp;&amp; target(fe) &amp;&amp; args(x, y);
+after(FigureElement fe, int x, int y) returning: setXY(fe, x, y) {
+    System.out.println(fe + &quot; moved to (&quot; + x + &quot;, &quot; + y + &quot;).&quot;);
+}
+</pre></div>
+
+
+</li>
+</ul>
+<h1>4. 类型间声明(Inter-type declarations)</h1>
+<p>是切入类和它们层次结构的声明。定义一个Point类的观察者：</p>
+<div class="highlight"><pre>aspect PointObserving {
+    private Vector Point.observers = new Vector();
+    ...
+}
+</pre></div>
+
+
+<p>添加访问这个私有成员的方法</p>
+<div class="highlight"><pre>aspect PointObserving {
+    private Vector Point.observers = new Vector();
+
+    public static void addObserver(Point p, Screen s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Point p, Screen s) {
+        p.observers.remove(s);
+    }
+    ...
+}
+</pre></div>
+
+
+<p>添加切入点changes，以便观察变化</p>
+<div class="highlight"><pre>aspect PointObserving {
+    private Vector Point.observers = new Vector();
+
+    public static void addObserver(Point p, Screen s) {
+        p.observers.add(s);
+    }
+    public static void removeObserver(Point p, Screen s) {
+        p.observers.remove(s);
+    }
+
+    pointcut changes(Point p): target(p) &amp;amp;&amp;amp; call(void Point.set*(int));
+
+    after(Point p): changes(p) {
+        Iterator iter = p.observers.iterator();
+        while ( iter.hasNext() ) {
+            updateObserver(p, (Screen)iter.next());
+        }
+    }
+
+    static void updateObserver(Point p, Screen s) {
+        s.display(p);
+    }
+}
+</pre></div>
+
+
+<h1>5. 切面（Aspect）</h1>
+<p>Aspects wrap up pointcuts, advice, and inter-type declarations in a a modular unit of crosscutting implementation. 类似一个类。</p>
+<p>不可以new出一个Aspect，默认情况它是单例的。这意味着，如果需要保持状态的话，advince可以使用一个非静态域：</p>
+<div class="highlight"><pre>aspect Logging {
+    OutputStream logStream = System.err;
+
+    before(): move() {
+        logStream.println(&quot;about to move&quot;);
+    }
+}
+</pre></div>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="http://linpower.github.io/tag/aspectj.html">AspectJ</a>
+    </p>
+  </div>
+</article>
+
+    <footer>
+      <p>&copy; power 2015</p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p>    </footer>
+  </main>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "name": "AspectJ学习之Introduction",
+  "headline": "AspectJ学习之Introduction",
+  "datePublished": "2015-03-30 18:32:00+08:00",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "power",
+    "url": "http://linpower.github.io/author/power.html"
+  },
+  "image": "/images/favicon.ico",
+  "url": "http://linpower.github.io/aspectjxue-xi-zhi-introduction.html",
+  "description": "The AspectJ Programming Guide第一章的笔记 1. 四个constructs：pointcuts, advice, inter-type declarations and aspects Pointcuts and advice dynamically affect program flow inter-type declarations statically affects a program’s class hierarchy and aspects encapsulate these new constructs. A join point is a well-defined point in the program flow. A pointcut picks out ..."
+}
+</script></body>
+</html>

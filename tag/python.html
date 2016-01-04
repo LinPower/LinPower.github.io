@@ -21,7 +21,7 @@
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="http://linpower.github.io"/>
 <meta property="og:image" content="/images/favicon.ico">
-  <title>Power Up &ndash; Tags</title>
+  <title>Power Up &ndash; Tag: python</title>
 </head>
 <body>
   <aside>
@@ -54,26 +54,45 @@
 
 <article>
   <header>
-    <h1>Tags</h1>
+    <h2><a href="http://linpower.github.io/web-crawleryue-du-bi-ji.html#web-crawleryue-du-bi-ji">Web Crawler阅读笔记</a></h2>
+    <p>
+      Posted on 日 09 八月 2015 in <a href="http://linpower.github.io/category/reading.html">Reading</a>
+      &#8226; Tagged with
+      <a href="http://linpower.github.io/tag/python.html">python</a>,      <a href="http://linpower.github.io/tag/crawler.html">Crawler</a>    </p>
   </header>
   <div>
-    <ul class="list">          <li><a href="http://linpower.github.io/tag/aspectj.html">AspectJ</a> (1)</li>
-          <li><a href="http://linpower.github.io/tag/bae.html">BAE</a> (2)</li>
-          <li><a href="http://linpower.github.io/tag/bcs.html">BCS</a> (1)</li>
-          <li><a href="http://linpower.github.io/tag/crawler.html">Crawler</a> (1)</li>
-          <li><a href="http://linpower.github.io/tag/django.html">django</a> (2)</li>
-          <li><a href="http://linpower.github.io/tag/gcj.html">GCJ</a> (1)</li>
-          <li><a href="http://linpower.github.io/tag/leetcode.html">Leetcode</a> (1)</li>
-          <li><a href="http://linpower.github.io/tag/python.html">python</a> (1)</li>
-          <li><a href="http://linpower.github.io/tag/sublime.html">sublime</a> (2)</li>
-          <li><a href="http://linpower.github.io/tag/ubuntu.html">Ubuntu</a> (3)</li>
-    </ul>
+      <blockquote>
+<p>看了下爬虫是怎么设计的，虽然材料有点老旧，但可以学到许多基础知识，<a href="http://nlp.stanford.edu/IR-book/html/htmledition/web-crawling-and-indexes-1.html">WebCrawler</a></p>
+</blockquote>
+<h1>1 Overview</h1>
+<p>爬虫的目的：快速高效地收集尽可能多的有用的网页。</p>
+<p>必须满足的特性：鲁棒性（Robustness），可能会遇到一些页面误导爬虫陷入无限循环中（honeypot）；礼节性（Politeness），遵守一些隐含的或者明确的策略调整访问页面的速率（如robots协议）。</p>
+<p>应该满足的特性：分布式地（Distributed），可伸缩（Scalable），高效的（Performance and efficiency），保持最新（Freshness），功能易于扩展（Extensible）</p>
+<h1>2 Crawling</h1>
+<p>爬虫从一些种子集（seed set）URL开始爬取内容，将爬取的内容进行解析，抽取出文本放入文本索引器，抽取出url放入URL frontier。之后爬虫从url frontier获取一个url，继续爬取。</p>
+<h2>2.1 Architecture</h2>
+<p><img alt="basic craler architecture" src="/images/crawler_architecture.png" /></p>
+<p><img alt="distributing crawler architecture" src="/images/distributing_crawler_architecture.png" /></p>
+<h2>2.2 DNS resolution ...</h2>
+      <a class="btn" href="http://linpower.github.io/web-crawleryue-du-bi-ji.html#web-crawleryue-du-bi-ji">Continue reading</a>
   </div>
 </article>
+
+  <div class="pagination">
+  </div>
 
     <footer>
       <p>&copy; power 2015</p>
 <p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p>    </footer>
   </main>
-</body>
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Power Up ",
+  "url" : "http://linpower.github.io",
+  "image": "/images/favicon.ico",
+  "description": ""
+}
+</script></body>
 </html>
