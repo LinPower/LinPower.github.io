@@ -89,64 +89,64 @@
 <span class="k">class</span> <span class="nc">BcsStorage</span><span class="p">(</span><span class="n">FileSystemStorage</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="nb">super</span><span class="p">(</span><span class="n">BcsStorage</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">location</span><span class="p">,</span> <span class="n">base_url</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">BcsStorage</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">location</span><span class="p">,</span> <span class="n">base_url</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">maxSize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; max file size 2G &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span>
+        <span class="sd">&quot;&quot;&quot; max file size 2G &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span> <span class="o">*</span> <span class="mi">1024</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">fileTypes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; the file types allowed &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="s">&#39;*&#39;</span>
+        <span class="sd">&quot;&quot;&quot; the file types allowed &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s">&#39;*&#39;</span>
 
     <span class="k">def</span> <span class="nf">makename</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-    <span class="n">oname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">fname</span><span class="p">,</span> <span class="n">hk</span> <span class="o">=</span> <span class="n">oname</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)</span>
-    <span class="k">except</span> <span class="n">Except</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span>
-        <span class="n">fname</span><span class="p">,</span> <span class="n">hk</span> <span class="o">=</span> <span class="n">oname</span><span class="p">,</span> <span class="s">&#39;&#39;</span>
-    <span class="k">if</span> <span class="n">hk</span><span class="p">:</span>
-        <span class="n">rname</span> <span class="o">=</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s">_</span><span class="si">%s</span><span class="s">.</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()),</span> <span class="n">fname</span><span class="p">,</span> <span class="n">hk</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">rname</span> <span class="o">=</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s">_</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()),</span> <span class="n">fname</span><span class="p">)</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">rname</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">name</span>
+        <span class="n">oname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">fname</span><span class="p">,</span> <span class="n">hk</span> <span class="o">=</span> <span class="n">oname</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">Except</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">fname</span><span class="p">,</span> <span class="n">hk</span> <span class="o">=</span> <span class="n">oname</span><span class="p">,</span> <span class="s">&#39;&#39;</span>
+        <span class="k">if</span> <span class="n">hk</span><span class="p">:</span>
+            <span class="n">rname</span> <span class="o">=</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s">_</span><span class="si">%s</span><span class="s">.</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()),</span> <span class="n">fname</span><span class="p">,</span> <span class="n">hk</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">rname</span> <span class="o">=</span> <span class="s">&quot;</span><span class="si">%s</span><span class="s">_</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">()),</span> <span class="n">fname</span><span class="p">)</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">rname</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">name</span>
 
     <span class="k">def</span> <span class="nf">_save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">content</span><span class="p">):</span>
-    <span class="n">hz</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fileTypes</span> <span class="o">!=</span> <span class="s">&#39;*&#39;</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">hz</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fileTypes</span><span class="p">:</span>
-            <span class="k">print</span> <span class="s">u&quot;不支持的文件类型</span><span class="si">%s</span><span class="s">，仅支持</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">hz</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fileTypes</span><span class="p">)</span>
-            <span class="k">raise</span> <span class="n">SuspiciousOperation</span><span class="p">(</span><span class="s">u&quot;不支持的文件类型</span><span class="si">%s</span><span class="s">，仅支持</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">hz</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fileTypes</span><span class="p">))</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">makename</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">content</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">maxSize</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="n">SuspiciousOperation</span><span class="p">(</span><span class="s">u&quot;文件大小超过限制&quot;</span><span class="p">)</span>
-    <span class="c"># object name must start with &#39;/&#39;</span>
-            <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">):</span>
-        <span class="n">o</span> <span class="o">=</span> <span class="n">bckt</span><span class="o">.</span><span class="n">object</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">o</span> <span class="o">=</span> <span class="n">bckt</span><span class="o">.</span><span class="n">object</span><span class="p">(</span><span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
-    <span class="n">o</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
-            <span class="c">#let the object can be read by public</span>
-    <span class="n">o</span><span class="o">.</span><span class="n">make_public</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">name</span>
+        <span class="n">hz</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">fileTypes</span> <span class="o">!=</span> <span class="s">&#39;*&#39;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">hz</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fileTypes</span><span class="p">:</span>
+                <span class="k">print</span> <span class="s">u&quot;不支持的文件类型</span><span class="si">%s</span><span class="s">，仅支持</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">hz</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fileTypes</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="n">SuspiciousOperation</span><span class="p">(</span><span class="s">u&quot;不支持的文件类型</span><span class="si">%s</span><span class="s">，仅支持</span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">hz</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fileTypes</span><span class="p">))</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">makename</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">content</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">maxSize</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">SuspiciousOperation</span><span class="p">(</span><span class="s">u&quot;文件大小超过限制&quot;</span><span class="p">)</span>
+        <span class="c"># object name must start with &#39;/&#39;</span>
+        <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">):</span>
+            <span class="n">o</span> <span class="o">=</span> <span class="n">bckt</span><span class="o">.</span><span class="n">object</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">o</span> <span class="o">=</span> <span class="n">bckt</span><span class="o">.</span><span class="n">object</span><span class="p">(</span><span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
+        <span class="n">o</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+        <span class="c">#let the object can be read by public</span>
+        <span class="n">o</span><span class="o">.</span><span class="n">make_public</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">name</span>
 
     <span class="k">def</span> <span class="nf">delete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-            <span class="c"># object name must start with &#39;/&#39;</span>
-    <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">):</span>
-        <span class="n">o</span> <span class="o">=</span> <span class="n">bckt</span><span class="o">.</span><span class="n">object</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">o</span> <span class="o">=</span> <span class="n">bckt</span><span class="o">.</span><span class="n">object</span><span class="p">(</span><span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
-    <span class="n">o</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+        <span class="c"># object name must start with &#39;/&#39;</span>
+        <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">):</span>
+            <span class="n">o</span> <span class="o">=</span> <span class="n">bckt</span><span class="o">.</span><span class="n">object</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">o</span> <span class="o">=</span> <span class="n">bckt</span><span class="o">.</span><span class="n">object</span><span class="p">(</span><span class="s">&quot;/&quot;</span> <span class="o">+</span> <span class="n">name</span><span class="p">)</span>
+        <span class="n">o</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
 
 <span class="k">class</span> <span class="nc">ImageStorage</span><span class="p">(</span><span class="n">BcsStorage</span><span class="p">):</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">fileTypes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">[</span><span class="s">&#39;jpg&#39;</span><span class="p">,</span> <span class="s">&#39;jpeg&#39;</span><span class="p">,</span> <span class="s">&#39;png&#39;</span><span class="p">,</span> <span class="s">&#39;gif&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s">&#39;jpg&#39;</span><span class="p">,</span> <span class="s">&#39;jpeg&#39;</span><span class="p">,</span> <span class="s">&#39;png&#39;</span><span class="p">,</span> <span class="s">&#39;gif&#39;</span><span class="p">]</span>
 </pre></div>
 
 
@@ -154,11 +154,11 @@
 <p>印象中应该只有一处有错，在<code>common.py</code>中需要修改shorten函数：</p>
 <div class="highlight"><pre>def shorten(s, l=80):
     if len(s)&lt;=l:
-    return s
+        return s
     if hasattr(s, &#39;__getitem__&#39;):
-    return s[:l-3] + &#39;...&#39;
+        return s[:l-3] + &#39;...&#39;
     else:
-    return &#39;data...&#39;
+        return &#39;data...&#39;
 </pre></div>
 
 
@@ -182,10 +182,6 @@ def delete(self, using=None):
 
 <h1>修改require,txt</h1>
 <p>我使用的bae，环境中缺少PIL包，在require.txt添加一行，写上<code>PIL</code></p>
-<blockquote>
-<p>附上成功上传的图片</p>
-</blockquote>
-<p><img alt="'ace'" src="http://bcs.duapp.com/my-blog-sk1/image/95d3ab31-477c-4460-8335-7e5255acfd24_dd5511355211d85091ef3921.jpg" /></p>
   </div>
   <div class="tag-cloud">
     <p>
